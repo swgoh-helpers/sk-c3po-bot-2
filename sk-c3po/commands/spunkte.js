@@ -1,6 +1,6 @@
 const { google } = require('googleapis');
 const sheetsApi = google.sheets('v4');
-const googleAuth = require('auth');
+const googleAuth = require('./auth');
 
 const SPREADSHEET_ID = '1b3zv_jMmec8AjHFHulWLz3iOvc-UW_EYLFchZwfJFzI';
 
