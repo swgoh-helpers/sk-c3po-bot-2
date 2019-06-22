@@ -1,13 +1,13 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-
+console.log('starting');
 client.on('ready', () => {
     console.log('I am ready!');
 });
 
 client.on('message', message => {
-
-    if (message.content.toLowerCase() === 'hello there' || message.content.toLowerCase() === 'hello there') {
+console.log('message received!');
+    if (message.content === 'hello there') {
         message.reply('General Kenobi!');
     }
 
