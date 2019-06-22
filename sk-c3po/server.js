@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
-const spunkte = require('commands/spunkte');
+const spunkte = require('./commands/spunkte');
 
 console.log('starting');
 client.on('ready', () => {
