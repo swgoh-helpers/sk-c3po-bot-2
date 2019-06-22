@@ -24,18 +24,19 @@ client.on('message', message => {
     var command = words[0].toLowerCase();
 
     const thinkingFace = client.emojis.find(emoji => emoji.name === "thinking");
+    console.log("thinkingFace", thinkingFace);
 
     switch (command)
     {
         case "hallo":
-            message.react(`${thinkingFace}`);
+            message.react(thinkingFace);
             message.channel.send("Guten Tag");
             break;
         case "test":
-            message.react(`${thinkingFace}`);
+            message.react(thinkingFace);
             break;
         default:
-            message.react(`${thinkingFace}`);
+            message.react(thinkingFace);
             message.channel.send("Ich spreche diese Sprache leider nicht.");
             break;
     }
