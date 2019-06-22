@@ -24,7 +24,6 @@ client.on('message', message => {
     var command = words[0].toLowerCase();
 
     const thinkingFace = client.emojis.find(emoji => emoji.name === "thinking");
-    console.log("thinkingFace", thinkingFace);
 
     switch (command)
     {
@@ -34,7 +33,7 @@ client.on('message', message => {
             break;
         case "spunkte":
             message.react(thinkingFace);
-            spunkte();
+            spunkte(message);
             break;
         default:
             message.react(thinkingFace);
