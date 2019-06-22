@@ -1,0 +1,19 @@
+{
+  "name": "sk-c3po",
+  "version": "0.0.0",
+  "description": "sk-c3po",
+  "main": "server.js",
+
+  "author": {
+    "name": "SdtBarbarossa"
+  },
+
+  "scripts": {
+    "start": "node server.js"
+  },
+
+  "dependencies": {
+    "discord.js": "11.1.0",
+    "request": "2.81.0"
+  }
+}
