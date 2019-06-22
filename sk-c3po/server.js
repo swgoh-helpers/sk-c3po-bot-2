@@ -13,7 +13,10 @@ client.on("warn", (e) => console.warn(e));
 client.on("debug", (e) => console.info(e));
 
 client.on('message', message => {
-console.log('message received!');
+    console.log('message received!');
+    console.log('typeof message', typeof message);
+    console.log('message', message);
+
     if (message.content === 'hello there') {
         message.reply('General Kenobi!');
     }
