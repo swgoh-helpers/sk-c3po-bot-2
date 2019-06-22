@@ -6,6 +6,7 @@ console.log("BOT_TOKEN", process.env.BOT_TOKEN);
 
 client.on('ready', () => {
     console.log('I am ready!');
+    console.log(client.emojis);
 });
 
 client.on("error", (e) => { console.log("error was thrown by the client!!"); console.error(e); });
@@ -23,18 +24,20 @@ client.on('message', message => {
     var words = messageWithoutPraefix.split(" ");
     var command = words[0].toLowerCase();
 
+    const thinkingFace = client.emojis.find(emoji => emoji.name === "Thinking Face");
+
     switch (command)
     {
         case "hallo":
-            message.react("??");
-            message.channel.send("Guten Tag ??");
+            message.react(`${thinkingFace}`);
+            message.channel.send("Guten Tag");
             break;
         case "test":
-            message.react("??");
+            message.react(`${thinkingFace}`);
             break;
         default:
-            message.react("??");
-            message.channel.send("Ich spreche diese Sprache leider nicht. ??");
+            message.react(`${thinkingFace}`);
+            message.channel.send("Ich spreche diese Sprache leider nicht.");
             break;
     }
 
