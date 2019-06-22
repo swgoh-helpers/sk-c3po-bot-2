@@ -6,7 +6,6 @@ console.log("BOT_TOKEN", process.env.BOT_TOKEN);
 
 client.on('ready', () => {
     console.log('I am ready!');
-    console.log(client.emojis);
 });
 
 client.on("error", (e) => { console.log("error was thrown by the client!!"); console.error(e); });
@@ -17,7 +16,7 @@ client.on('message', message => {
 
     /** Ignore conditions **/
     if (message.author.bot) { return; }
-    if (!message.content.startsWith("#")) { return; }
+    if (!message.content.startsWith("+")) { return; }
 
     var messageWithoutPraefix = message.content.slice(1);
 
