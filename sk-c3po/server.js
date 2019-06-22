@@ -1,9 +1,9 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
+
+const spunkte = require('commands/spunkte');
+
 console.log('starting');
-
-console.log("BOT_TOKEN", process.env.BOT_TOKEN);
-
 client.on('ready', () => {
     console.log('I am ready!');
 });
@@ -32,8 +32,9 @@ client.on('message', message => {
             message.react(thinkingFace);
             message.channel.send("Guten Tag");
             break;
-        case "test":
+        case "spunkte":
             message.react(thinkingFace);
+            spunkte();
             break;
         default:
             message.react(thinkingFace);
