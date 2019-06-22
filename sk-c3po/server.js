@@ -24,7 +24,7 @@ client.on('message', message => {
     var words = messageWithoutPraefix.split(" ");
     var command = words[0].toLowerCase();
 
-    const thinkingFace = client.emojis.find(emoji => emoji.name === "Thinking Face");
+    const thinkingFace = client.emojis.find(emoji => emoji.name === "thinking");
 
     switch (command)
     {
