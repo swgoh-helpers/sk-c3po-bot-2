@@ -13,16 +13,32 @@ client.on("warn", (e) => console.warn(e));
 client.on("debug", (e) => console.info(e));
 
 client.on('message', message => {
-    console.log('message received!');
-    console.log('typeof message', typeof message);
-    console.log('message', message);
 
-    if (message.content === 'hello there') {
-        message.reply('General Kenobi!');
+    /** Ignore conditions **/
+    if (message.author.bot) { return; }
+    if (!message.content.startsWith("#")) { return; }
+
+    var messageWithoutPraefix = message.content.slice(1);
+
+    var words = messageWithoutPraefix.split(" ");
+    var command = words[0].toLowerCase();
+
+    switch (command)
+    {
+        case "hallo":
+            message.react("??");
+            message.channel.send("Guten Tag ??");
+            break;
+        case "test":
+            message.react("??");
+            break;
+        default:
+            message.react("??");
+            message.channel.send("Ich spreche diese Sprache leider nicht. ??");
+            break;
     }
 
 });
-
 
 
 // THIS  MUST  BE  THIS  WAY
