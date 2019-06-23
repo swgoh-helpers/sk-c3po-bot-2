@@ -37,7 +37,7 @@ client.on('message', message => {
             spunkte(message);
             break;
         case "weekly":
-            message.react(thinkingFace);
+            message.react(thinkingFace, client);
             weeklytitle(message);
             break;
         default:
