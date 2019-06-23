@@ -31,8 +31,8 @@ module.exports = async (message, client) => {
         report += `Eifriger Padawan: ${memberPadawan.user}\n`;
 
         //Staffelführer
-        let staffelfuehrer = message.guild.roles.find('name', 'Staffelführer');
-        console.log("padawan", staffelfuehrer != null);
+        let staffelfuehrer = message.guild.roles.find('name', 'Staffelfuehrer');
+        console.log("staffelfuehrer", staffelfuehrer != null);
         staffelfuehrer.members.forEach(
             function (mem) {
                 mem.removeRole(staffelfuehrer);
@@ -43,7 +43,7 @@ module.exports = async (message, client) => {
 
         //Großadmiral
         let grossadmiral = message.guild.roles.find('name', 'Großadmiral');
-        console.log("padawan", grossadmiral != null);
+        console.log("grossadmiral", grossadmiral != null);
         grossadmiral.members.forEach(
             function (mem) {
                 mem.removeRole(grossadmiral);
@@ -54,7 +54,7 @@ module.exports = async (message, client) => {
 
         //Gladiator
         let gladiator = message.guild.roles.find('name', 'Gladiator');
-        console.log("gladiator", gladiator != null);
+        console.log("Gladiator", gladiator != null);
         gladiator.members.forEach(
             function (mem) {
                 mem.removeRole(gladiator);
