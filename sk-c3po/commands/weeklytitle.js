@@ -39,7 +39,7 @@ module.exports = async (client) => {
             function (mem) {
                 mem.removeRole(spendengott);
             });
-        let memberSpendengott = guild.members.find(member => member.user.username.toLowerCase().includes(allSpenden[0].name));
+        let memberSpendengott = guild.members.find(member => member.user.username.toLowerCase().includes(allSpenden[0].name.toLowerCase()));
 
         var spendenText = "";
 
@@ -66,7 +66,7 @@ module.exports = async (client) => {
             function (mem) {
                 mem.removeRole(padawan);
             });
-        let memberPadawan = guild.members.find(member => member.user.username.toLowerCase().includes(allPadawan[0].name));
+        let memberPadawan = guild.members.find(member => member.user.username.toLowerCase().includes(allPadawan[0].name.toLowerCase()));
        
         var padawanText = "";
         if (memberPadawan) {
@@ -91,7 +91,7 @@ module.exports = async (client) => {
             function (mem) {
                 mem.removeRole(staffelfuehrer);
             });
-        let memberStaffelfuehrer = guild.members.find(member => member.user.username.toLowerCase().includes(allStaffel[0].name));
+        let memberStaffelfuehrer = guild.members.find(member => member.user.username.toLowerCase().includes(allStaffel[0].name.toLowerCase()));
         
         var staffelText = "";
         if (memberStaffelfuehrer) {
@@ -116,7 +116,7 @@ module.exports = async (client) => {
             function (mem) {
                 mem.removeRole(grossadmiral);
             });
-        let memberGrossadmiral = guild.members.find(member => member.user.username.toLowerCase().includes(allAdmiral[0].name));
+        let memberGrossadmiral = guild.members.find(member => member.user.username.toLowerCase().includes(allAdmiral[0].name.toLowerCase()));
 
         var admiralText = "";
         if (memberGrossadmiral) {
@@ -142,7 +142,7 @@ module.exports = async (client) => {
             function (mem) {
                 mem.removeRole(gladiator);
             });
-        let memberGladiator = guild.members.find(member => member.user.username.toLowerCase().includes(allGladiator[0].name));
+        let memberGladiator = guild.members.find(member => member.user.username.toLowerCase().includes(allGladiator[0].name.toLowerCase()));
 
         var gladiatorText = "";
         if (memberGladiator) {
