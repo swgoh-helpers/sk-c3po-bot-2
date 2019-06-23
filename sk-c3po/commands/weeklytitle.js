@@ -11,7 +11,7 @@ module.exports = async (message, client) => {
 
         let role = message.guild.roles.find('name', 'Eroberer');
         
-        let member = guild.members.find(member => member.username.toLowerCase().includes('zhiruk'));
+        let member = guild.members.find(member => member.user.username.toLowerCase().includes('zhiruk'));
         console.log("member", member);
 
         member.addRole(role);
