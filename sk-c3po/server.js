@@ -75,7 +75,7 @@ app.post('/command', jsonParser, function (req, res) {
     var command = req.body;
     console.log("command", command);
 
-    switch (command) {
+    switch (command.command) {
         case "weekly":
             weeklytitle(client);
             break;
