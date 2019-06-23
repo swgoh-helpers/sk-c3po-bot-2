@@ -41,14 +41,14 @@ module.exports = async (message, client) => {
         report += `Staffelf¸hrer: ${memberStaffelfuehrer.user}\n`;
 
         //Groﬂadmiral
-        let groﬂadmiral = message.guild.roles.find('name', 'Groﬂadmiral');
-        groﬂadmiral.members.forEach(
+        let grossadmiral = message.guild.roles.find('name', 'Groﬂadmiral');
+        grossadmiral.members.forEach(
             function (mem) {
-                mem.removeRole(groﬂadmiral);
+                mem.removeRole(grossadmiral);
             });
-        let memberGroﬂadmiral = guild.members.find(member => member.user.username.toLowerCase().includes('vadith'));
-        memberGroﬂadmiral.addRole(groﬂadmiral);
-        report += `Groﬂadmiral: ${memberGroﬂadmiral.user}\n`;
+        let memberGrossadmiral = guild.members.find(member => member.user.username.toLowerCase().includes('vadith'));
+        memberGrossadmiral.addRole(grossadmiral);
+        report += `Groﬂadmiral: ${memberGrossadmiral.user}\n`;
 
         //Gladiator
         let gladiator = message.guild.roles.find('name', 'Gladiator');
