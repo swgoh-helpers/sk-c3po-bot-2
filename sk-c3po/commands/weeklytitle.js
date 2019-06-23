@@ -1,4 +1,14 @@
 const Discord = require('discord.js');
+const request = require('request');
+
+var requestAsync = function (url) {
+    return new Promise((resolve, reject) => {
+        var req = request(url, (err, response, body) => {
+            if (err) return reject(err, response, body);
+            resolve(JSON.parse(body));
+        });
+    });
+};
 
 const urls = [
     'http://schattenkollektiv.gear.host/api/weekly/GetSpendengott',
