@@ -6,8 +6,8 @@ module.exports = async (message) => {
 
         var embed = new Discord.RichEmbed();
 
-        console.log("message.channel", message.channel);
-        console.log("message.guild", message.guild);
+        //console.log("message.channel", message.channel);
+        //console.log("message.guild", message.guild);
 
         embed.addField("Wochenreport:", "Meiste blub:1");
 
