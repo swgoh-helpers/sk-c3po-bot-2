@@ -40,7 +40,7 @@ module.exports = async (message) => {
                             }
 
                             if (sum != 0){
-                                messageToSendTemp += `Gesamt: ***${sum}*** Punkte`;
+                                messageToSendTemp += `Gesamt: __**${sum}** Punkte__`;
                             }
 
                             console.log("element[0]", element[0]);
