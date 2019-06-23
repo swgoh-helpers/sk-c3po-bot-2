@@ -29,11 +29,18 @@ module.exports = async (message) => {
                         if (element[0] != "Name") {
 
                             var messageToSendTemp = "";
-                            
+
+                            var sum = 0;
+
                             for (var i = 1; i < 13; i = i + 3) {
                                 if (element[i] != "") {
-                                    messageToSendTemp += element[i] + " **" + element[i + 1] + "**Punkte wegen: " + element[i + 2] + "\n";
+                                    messageToSendTemp += element[i] + " **" + element[i + 1] + "** Punkte wegen: " + element[i + 2] + "\n";
+                                    sum += Number(element[i + 1]);
                                 }
+                            }
+
+                            if (sum != 0){
+                                messageToSendTemp += `Gesamt: ***${sum}*** Punkte`;
                             }
 
                             console.log("element[0]", element[0]);
