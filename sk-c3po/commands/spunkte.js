@@ -36,7 +36,7 @@ module.exports = async (message) => {
                                 }
                             }
                             
-                            embed.addField(element[0], messageToSendTemp);
+                            embed.addField(element[0], messageToSendTemp, true);
                         }
                     });
                     
