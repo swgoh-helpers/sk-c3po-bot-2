@@ -40,6 +40,10 @@ client.on('message', message => {
             message.react(thinkingFace);
             weeklytitle(client);
             break;
+        case "channelid":
+            message.react(thinkingFace);
+            message.reply(message.channel.id);
+            break;
         default:
             message.react(thinkingFace);
             message.channel.send("Ich spreche diese Sprache leider nicht.");
