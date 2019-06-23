@@ -49,7 +49,7 @@ module.exports = async (client) => {
         }
         else
         {
-            spendenText += `Kann ${allSpenden[0].name} auf Discord nicht finden.`;
+            spendenText += `Kann ${allSpenden[0].name} auf Discord nicht finden.\n`;
             spendenText += `1: ${allSpenden[0].name} mit ${allSpenden[0].spenden}\n`;
         }
         spendenText += `2: ${allSpenden[1].name} mit ${allSpenden[1].spenden}\n`;
@@ -74,7 +74,7 @@ module.exports = async (client) => {
             memberPadawan.addRole(padawan);
         }
         else {
-            padawanText += `Kann ${allPadawan[0].name} auf Discord nicht finden.`;
+            padawanText += `Kann ${allPadawan[0].name} auf Discord nicht finden.\n`;
             padawanText += `1: ${allPadawan[0].name} mit ${allPadawan[0].gm}\n`;
         }
         padawanText += `2: ${allPadawan[1].name} mit ${allPadawan[1].gm}\n`;
@@ -99,7 +99,7 @@ module.exports = async (client) => {
             memberStaffelfuehrer.addRole(staffelfuehrer);
         }
         else {
-            staffelText += `Kann ${allStaffel[0].name} auf Discord nicht finden.`;
+            staffelText += `Kann ${allStaffel[0].name} auf Discord nicht finden.\n`;
             staffelText += `1: ${allStaffel[0].name} mit ${allStaffel[0].gm}\n`;
         }
         staffelText += `2: ${allStaffel[1].name} mit ${allStaffel[1].gm}\n`;
@@ -124,7 +124,7 @@ module.exports = async (client) => {
             memberGrossadmiral.addRole(grossadmiral);
         }
         else {
-            admiralText += `Kann ${allAdmiral[0].name} auf Discord nicht finden.`;
+            admiralText += `Kann ${allAdmiral[0].name} auf Discord nicht finden.\n`;
             admiralText += `1: ${allAdmiral[0].name} mit ${allAdmiral[0].avgRank}\n`;
         }
         admiralText += `2: ${allAdmiral[1].name} mit ${allAdmiral[1].avgRank}\n`;
@@ -150,7 +150,7 @@ module.exports = async (client) => {
             memberGladiator.addRole(gladiator);
         }
         else {
-            gladiatorText += `Kann ${allGladiator[0].name} auf Discord nicht finden.`;
+            gladiatorText += `Kann ${allGladiator[0].name} auf Discord nicht finden.\n`;
             gladiatorText += `1: ${allGladiator[0].name} mit ${allGladiator[0].avgRank}\n`;
         }
         gladiatorText += `2: ${allGladiator[1].name} mit ${allGladiator[1].avgRank}\n`;
