@@ -23,7 +23,7 @@ module.exports = async (message) => {
                     }
                     var rows = response.data.values;
                     
-                    var embed = new Discord.embed();
+                    var embed = new Discord.RichEmbed();
 
                     rows.forEach(function (element) {
                         if (element[0] != "Name") {
