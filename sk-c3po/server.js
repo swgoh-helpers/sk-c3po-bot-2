@@ -2,6 +2,11 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 
 const bodyParser = require('body-parser');
+const express = require('express');
+
+// create Express app
+// about Express itself: https://expressjs.com/
+const app = express();
 
 const spunkte = require('./commands/spunkte');
 const weeklytitle = require('./commands/weeklytitle');
