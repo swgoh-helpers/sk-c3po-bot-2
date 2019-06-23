@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+const client = Discord.Client();
 
 module.exports = async (message) => {
     try {
@@ -10,7 +11,7 @@ module.exports = async (message) => {
 
         embed.addField("Wochenreport:", "Meiste blub:1");
 
-        message.channel.send({ embed });
+        client.channels.get(process.env.WEEKLY_CHANNEL_ID).send({ embed });
         
     } catch (e) {
         message.channel.send(e.message);
