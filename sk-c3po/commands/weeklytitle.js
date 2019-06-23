@@ -5,18 +5,16 @@ module.exports = async (message, client) => {
 
         var embed = new Discord.RichEmbed();
 
-        //console.log("message.channel", message.channel);
-        //console.log("message.guild", message.guild);
+        const guild = client.guilds.get(process.env.GUILD_ID);
 
         embed.addField("Wochenreport:", "Meiste blub:1");
 
         let role = message.guild.roles.find('name', 'Eroberer');
-        console.log("role", role);
+        
+        let member = guild.members.find(member => member.username.toLowerCase().includes('zhiruk'));
+        console.log("member", member);
 
-        let user = client.users.find(user => user.username.toLowerCase().includes('zhiruk'));
-        console.log("user", user);
-
-        user.addRole(role);
+        member.addRole(role);
 
         client.channels.get(process.env.WEEKLY_CHANNEL_ID).send({ embed });
         
