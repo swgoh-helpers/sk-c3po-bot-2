@@ -7,14 +7,19 @@ module.exports = async (message, client) => {
 
         const guild = client.guilds.get(process.env.GUILD_ID);
 
-        embed.addField("Wochenreport:", "Meiste blub:1");
+        let spendengott = message.guild.roles.find('name', 'Spendengott');
 
-        let role = message.guild.roles.find('name', 'Eroberer');
+        let memberWithRole = spendengott.members;
+        memberWithRole.forEach(
+            function (mem) {
+                mem.removeRole(spendengott);
+            });
+
+        let memberSpendengott = guild.members.find(member => member.user.username.toLowerCase().includes('sdtbarbarossa'));
+
+        memberSpendengott.addRole(spendengott);
         
-        let member = guild.members.find(member => member.user.username.toLowerCase().includes('zhiruk'));
-        console.log("member", member);
-
-        member.addRole(role);
+        embed.addField("Wochenreport:", `Spendengott: @${memberSpendengott.user}`);
 
         client.channels.get(process.env.WEEKLY_CHANNEL_ID).send({ embed });
         
