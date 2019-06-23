@@ -1,11 +1,23 @@
 const Discord = require('discord.js');
 
+const urls = [
+    'http://schattenkollektiv.gear.host/api/weekly/GetSpendengott',
+    'http://schattenkollektiv.gear.host/api/weekly/GetPadawan',
+    'http://schattenkollektiv.gear.host/api/weekly/GetStaffel',
+    'http://schattenkollektiv.gear.host/api/weekly/GetAdmiral',
+    'http://schattenkollektiv.gear.host/api/weekly/GetGladiator'
+];
+
 module.exports = async (client) => {
     try {
 
         var embed = new Discord.RichEmbed();
 
         const guild = client.guilds.get(process.env.GUILD_ID);
+        
+        var data = await Promise.all(urls.map(requestAsync));
+
+        console.log("data", data);
 
         var report = "";
 
