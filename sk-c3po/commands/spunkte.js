@@ -39,7 +39,7 @@ module.exports = async (message) => {
                             console.log("element[0]", element[0]);
                             console.log(" messageToSendTemp", messageToSendTemp);
                             if (element[0] != "" && messageToSendTemp != "") {
-                                embed.addField(element[0], messageToSendTemp, true);
+                                embed.addField(element[0], messageToSendTemp);
                             }
                         }
                     });
