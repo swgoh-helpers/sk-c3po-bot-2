@@ -2,6 +2,8 @@ const { google } = require('googleapis');
 const sheetsApi = google.sheets('v4');
 const googleAuth = require('./auth');
 
+const Discord = require('discord.js');
+
 const SPREADSHEET_ID = '1b3zv_jMmec8AjHFHulWLz3iOvc-UW_EYLFchZwfJFzI';
 
 module.exports = async (message) => {
@@ -20,27 +22,25 @@ module.exports = async (message) => {
                         return;
                     }
                     var rows = response.data.values;
-
-                    var messageToSend = "Zusammenfassung: \n";
+                    
+                    var embed = new Discord.embed();
 
                     rows.forEach(function (element) {
                         if (element[0] != "Name") {
-                            var messageToSendTemp = "-----------\nSpieler: " + element[0] + "\n";
-                            var keinVergehen = true;
+
+                            var messageToSendTemp = "";
+                            
                             for (var i = 1; i < 13; i = i + 3) {
                                 if (element[i] != "") {
-                                    messageToSendTemp += "Datum: " + element[i] + " Punkte: " + element[i + 1] + " Vergehen : " + element[i + 2] + "\n";
-                                    keinVergehen = false;
+                                    messageToSendTemp += "Datum: " + element[i] + "\nPunkte: " + element[i + 1] + "\nVergehen : " + element[i + 2] + "\n";
                                 }
                             }
-
-                            if (keinVergehen != true) {
-                                messageToSend += messageToSendTemp;
-                            }
+                            
+                            embed.addField(element[0], messageToSendTemp);
                         }
                     });
                     
-                    message.author.send(messageToSend);
+                    message.author.send({embed});
                     message.channel.send("Ich habe dir Privat geantwortet.");
                 });
             })
