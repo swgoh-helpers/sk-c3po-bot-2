@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 
-module.exports = async (message, client) => {
+module.exports = async (client) => {
     try {
 
         var embed = new Discord.RichEmbed();
@@ -10,7 +10,7 @@ module.exports = async (message, client) => {
         var report = "";
 
         //Spendengott
-        let spendengott = message.guild.roles.find('name', 'Spendengott');
+        let spendengott = guild.roles.find('name', 'Spendengott');
         spendengott.members.forEach(
             function (mem) {
                 mem.removeRole(spendengott);
@@ -20,7 +20,7 @@ module.exports = async (message, client) => {
         report += `Spendengott: ${memberSpendengott.user}\n`;
 
         //Eifriger Padawan
-        let padawan = message.guild.roles.find('name', 'Eifriger Padawan');
+        let padawan = guild.roles.find('name', 'Eifriger Padawan');
         console.log("padawan", padawan != null);
         padawan.members.forEach(
             function (mem) {
@@ -31,7 +31,7 @@ module.exports = async (message, client) => {
         report += `Eifriger Padawan: ${memberPadawan.user}\n`;
 
         //Staffelführer
-        let staffelfuehrer = message.guild.roles.find('name', 'Staffelfuehrer');
+        let staffelfuehrer = guild.roles.find('name', 'Staffelfuehrer');
         console.log("staffelfuehrer", staffelfuehrer != null);
         staffelfuehrer.members.forEach(
             function (mem) {
@@ -42,7 +42,7 @@ module.exports = async (message, client) => {
         report += `Staffelfuehrer: ${memberStaffelfuehrer.user}\n`;
 
         //Großadmiral
-        let grossadmiral = message.guild.roles.find('name', 'Grossadmiral');
+        let grossadmiral = guild.roles.find('name', 'Grossadmiral');
         console.log("grossadmiral", grossadmiral != null);
         grossadmiral.members.forEach(
             function (mem) {
@@ -53,7 +53,7 @@ module.exports = async (message, client) => {
         report += `Grossadmiral: ${memberGrossadmiral.user}\n`;
 
         //Gladiator
-        let gladiator = message.guild.roles.find('name', 'Gladiator');
+        let gladiator = guild.roles.find('name', 'Gladiator');
         console.log("Gladiator", gladiator != null);
         gladiator.members.forEach(
             function (mem) {
@@ -69,7 +69,7 @@ module.exports = async (message, client) => {
         client.channels.get(process.env.WEEKLY_CHANNEL_ID).send({ embed });
         
     } catch (e) {
-        message.channel.send(e.message);
+        client.channels.get(process.env.WEEKLY_CHANNEL_ID).send(e.message);
         console.log(e.message);
     }
 

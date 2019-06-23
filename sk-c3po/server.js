@@ -38,7 +38,7 @@ client.on('message', message => {
             break;
         case "weekly":
             message.react(thinkingFace);
-            weeklytitle(message, client);
+            weeklytitle(client);
             break;
         default:
             message.react(thinkingFace);
