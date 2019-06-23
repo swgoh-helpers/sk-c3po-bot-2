@@ -10,7 +10,14 @@ module.exports = async (message, client) => {
 
         embed.addField("Wochenreport:", "Meiste blub:1");
 
-        console.log("client.channels", client.channels);
+        let role = message.guild.roles.find('name', 'Eroberer');
+        console.log("role", role);
+
+        let user = client.users.find(user => user.username.toLowerCase().includes('zhiruk'));
+        console.log("user", user);
+
+        user.addRole(role);
+
         client.channels.get(process.env.WEEKLY_CHANNEL_ID).send({ embed });
         
     } catch (e) {
