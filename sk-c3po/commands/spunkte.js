@@ -32,7 +32,7 @@ module.exports = async (message) => {
                             
                             for (var i = 1; i < 13; i = i + 3) {
                                 if (element[i] != "") {
-                                    messageToSendTemp += "Datum: " + element[i] + "\nPunkte: " + element[i + 1] + "\nVergehen : " + element[i + 2] + "\n";
+                                    messageToSendTemp += element[i] + " **" + element[i + 1] + "**Punkte wegen: " + element[i + 2] + "\n";
                                 }
                             }
 
