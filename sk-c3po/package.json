@@ -15,6 +15,7 @@
   "dependencies": {
     "discord.js": "11.5.1",
     "request": "2.88.0",
-    "googleapis": "40.0.0"
+    "googleapis": "40.0.0",
+    "body-parser": "1.19.0"
   }
 }
