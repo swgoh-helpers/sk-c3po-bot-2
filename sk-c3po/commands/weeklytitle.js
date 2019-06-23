@@ -11,6 +11,7 @@ module.exports = async (message) => {
 
         embed.addField("Wochenreport:", "Meiste blub:1");
 
+        console.log("client.channels", client.channels);
         client.channels.get(process.env.WEEKLY_CHANNEL_ID).send({ embed });
         
     } catch (e) {
