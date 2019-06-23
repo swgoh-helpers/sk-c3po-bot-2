@@ -11,8 +11,7 @@ module.exports = async (message, client) => {
 
         //Spendengott
         let spendengott = message.guild.roles.find('name', 'Spendengott');
-        let memberWithRole = spendengott.members;
-        memberWithRole.forEach(
+        spendengott.members.forEach(
             function (mem) {
                 mem.removeRole(spendengott);
             });
@@ -22,6 +21,7 @@ module.exports = async (message, client) => {
 
         //Eifriger Padawan
         let padawan = message.guild.roles.find('name', 'Eifriger Padawan');
+        console.log("padawan", padawan != null);
         padawan.members.forEach(
             function (mem) {
                 mem.removeRole(padawan);
@@ -32,6 +32,7 @@ module.exports = async (message, client) => {
 
         //Staffelführer
         let staffelfuehrer = message.guild.roles.find('name', 'Staffelführer');
+        console.log("padawan", staffelfuehrer != null);
         staffelfuehrer.members.forEach(
             function (mem) {
                 mem.removeRole(staffelfuehrer);
@@ -42,6 +43,7 @@ module.exports = async (message, client) => {
 
         //Großadmiral
         let grossadmiral = message.guild.roles.find('name', 'Großadmiral');
+        console.log("padawan", grossadmiral != null);
         grossadmiral.members.forEach(
             function (mem) {
                 mem.removeRole(grossadmiral);
@@ -52,6 +54,7 @@ module.exports = async (message, client) => {
 
         //Gladiator
         let gladiator = message.guild.roles.find('name', 'Gladiator');
+        console.log("gladiator", gladiator != null);
         gladiator.members.forEach(
             function (mem) {
                 mem.removeRole(gladiator);
