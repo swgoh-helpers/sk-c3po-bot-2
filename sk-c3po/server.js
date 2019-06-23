@@ -72,6 +72,7 @@ app.post('/command', jsonParser, function (req, res) {
     console.log('command recieved!');
     res.send({ status: 200 });
 
+    console.log("req", req);
     var command = req.body;
     console.log("command", command);
 
