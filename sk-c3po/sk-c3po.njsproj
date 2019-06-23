@@ -30,6 +30,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="commands\auth.js" />
+    <Compile Include="commands\weeklytitle.js" />
     <Compile Include="commands\spunkte.js" />
     <Compile Include="server.js" />
     <Content Include="package.json" />

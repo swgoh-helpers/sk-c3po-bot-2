@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 
 const spunkte = require('./commands/spunkte');
+const weeklytitle = require('./commands/weeklytitle');
 
 console.log('starting');
 client.on('ready', () => {
@@ -34,6 +35,10 @@ client.on('message', message => {
         case "spunkte":
             message.react(thinkingFace);
             spunkte(message);
+            break;
+        case "weekly":
+            message.react(thinkingFace);
+            weeklytitle(message);
             break;
         default:
             message.react(thinkingFace);
