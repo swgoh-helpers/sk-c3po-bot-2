@@ -35,8 +35,12 @@ module.exports = async (message) => {
                                     messageToSendTemp += "Datum: " + element[i] + "\nPunkte: " + element[i + 1] + "\nVergehen : " + element[i + 2] + "\n";
                                 }
                             }
-                            
-                            embed.addField(element[0], messageToSendTemp, true);
+
+                            console.log("element[0]", element[0]);
+                            console.log(" messageToSendTemp", messageToSendTemp);
+                            if (element[0] != "" && messageToSendTemp != "") {
+                                embed.addField(element[0], messageToSendTemp, true);
+                            }
                         }
                     });
                     
