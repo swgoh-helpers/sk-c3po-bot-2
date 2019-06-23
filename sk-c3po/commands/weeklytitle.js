@@ -39,10 +39,10 @@ module.exports = async (message, client) => {
             });
         let memberStaffelfuehrer = guild.members.find(member => member.user.username.toLowerCase().includes('vadith'));
         memberStaffelfuehrer.addRole(staffelfuehrer);
-        report += `Staffelf¸hrer: ${memberStaffelfuehrer.user}\n`;
+        report += `Staffelfuehrer: ${memberStaffelfuehrer.user}\n`;
 
         //Groﬂadmiral
-        let grossadmiral = message.guild.roles.find('name', 'Groﬂadmiral');
+        let grossadmiral = message.guild.roles.find('name', 'Grossadmiral');
         console.log("grossadmiral", grossadmiral != null);
         grossadmiral.members.forEach(
             function (mem) {
@@ -50,7 +50,7 @@ module.exports = async (message, client) => {
             });
         let memberGrossadmiral = guild.members.find(member => member.user.username.toLowerCase().includes('vadith'));
         memberGrossadmiral.addRole(grossadmiral);
-        report += `Groﬂadmiral: ${memberGrossadmiral.user}\n`;
+        report += `Grossadmiral: ${memberGrossadmiral.user}\n`;
 
         //Gladiator
         let gladiator = message.guild.roles.find('name', 'Gladiator');
