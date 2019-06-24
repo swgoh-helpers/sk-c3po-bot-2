@@ -40,10 +40,7 @@ async function compareGuilds(newMessage, ourAllyCode, enemyAllyCode, swapi) {
 
         let ourUnits = await getAllUnitsForGuild(ourGuild, swapi);
         let enemyUnits = await getAllUnitsForGuild(enemyGuild, swapi);
-
-        console.log("ourUnits", ourUnits);
-        console.log("enemyUnits", enemyUnits);
-
+        
         embed.addField(`${ourGuild.name} vs ${enemyGuild.name}`, getFirstMessagePart(ourGuild, enemyGuild, ourUnits, enemyUnits));
 
         newMessage.edit({ embed });
@@ -73,6 +70,7 @@ function getFirstMessagePart(ourGuild, enemyGuild, ourUnits, enemyUnits) {
 
     //ourguild
     let ourUnitIds = Object.keys(ourUnits);
+    console.log("ourUnits[ourUnitIds[0]]", ourUnits[ourUnitIds[0]]);
     let ourShipGP = ourUnitIds.map(id => {
         if (ourUnits[id][0].type === 'SHIP' || ourUnits[id][0].type === 2) {
             return ourUnits[id].reduce((total, num) => parseInt(parseInt(total || 0) + parseInt(num.gp || 0)), 0);
