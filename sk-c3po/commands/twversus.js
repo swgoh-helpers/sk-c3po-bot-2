@@ -46,9 +46,12 @@ async function compareGuilds(newMessage, ourAllyCode, enemyAllyCode, swapi) {
         let charList = JSON.parse(process.env.CHARLIST);
         let shipList = JSON.parse(process.env.SHIPLIST);
 
+        console.log("ourUnits[charList[0]]", ourUnits[charList[0]]);
+
         charList.forEach(
             function (char) {
-                embed.addField(char, getCharacterMessagePart(char, ourUnits, enemyUnits));
+                newMessage.edit("`Vergleiche " + char + "...`");
+                embed.addField(char, getCharacterMessagePart(char, ourUnits, enemyUnits), true);
             }
         );
         
