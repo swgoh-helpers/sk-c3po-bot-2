@@ -16,13 +16,7 @@ module.exports = async (message, words, swapi) => {
                 (newMessage) => {
                     compareGuilds(newMessage, ourAllyCode, enemyAllyCode, swapi);
                 });
-
-        //var embed = new Discord.RichEmbed();
-
-        //embed.addField("twversus", "twversus");
-
-        //message.reply({ embed });
-
+        
     } catch (e) {
         message.reply.send(e.message);
         console.log(e.message);
@@ -32,24 +26,26 @@ module.exports = async (message, words, swapi) => {
 async function compareGuilds(newMessage, ourAllyCode, enemyAllyCode, swapi) {
     try {
 
+        var embed = new Discord.RichEmbed();
+
         const ourGuildSwapi = await swapi.fetchGuild({ "allycode": ourAllyCode, "language": process.env.LANGUAGE });
         let ourGuild = ourGuildSwapi.result[0];
-        console.log(ourGuild);
 
         newMessage.edit("`" + ourGuild.name + " erfolgreich geupdated.`");
 
         const enemyGuildSwapi = await swapi.fetchGuild({ "allycode": enemyAllyCode, "language": process.env.LANGUAGE });
         let enemyGuild = enemyGuildSwapi.result[0];
-        console.log(enemyGuild);
 
         newMessage.edit("`Gilde " + enemyGuild.name + " gefunden! \nAnalysiere Roster...`");
 
         let ourUnits = await getAllUnitsForGuild(ourGuild, swapi);
         let enemyUnits = await getAllUnitsForGuild(enemyGuild, swapi);
 
-        console.log("ourUnits", ourUnits);
+        console.log(enemyGuild);
 
-        newMessage.edit("`Fertig!`");
+        embed.addField(`${ourGuild.name} vs ${enemyGuild.name}`, "twversus");
+
+        message.edit({ embed });
 
     } catch (e) {
         newMessage.edit(e.message);
