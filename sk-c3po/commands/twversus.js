@@ -49,7 +49,7 @@ async function compareGuilds(newMessage, ourAllyCode, enemyAllyCode, swapi) {
         const allUnitsSwapi = await swapi.fetchData({ "collection":"unitsList", "allycode": enemyAllyCode, "language": process.env.LANGUAGE });
         let allUnits = allUnitsSwapi.result;
 
-        console.log("allUnits", allUnits);
+        console.log("allUnitsSwapi", allUnitsSwapi);
 
         charList.forEach(
             function (char) {
@@ -82,8 +82,7 @@ async function getAllUnitsForGuild(guild, swapi) {
 
 function getFirstMessagePart(ourGuild, enemyGuild, ourUnits, enemyUnits) {
     var result = "```";
-
-    console.log("ourguil start");
+    
     //ourguild
     let ourUnitIds = Object.keys(ourUnits);
 
@@ -124,10 +123,7 @@ function getFirstMessagePart(ourGuild, enemyGuild, ourUnits, enemyUnits) {
         }
     );
     //ourguild end
-
-    console.log("ourguil end");
-
-    console.log("enemyguild start");
+    
     //enemyguild
     let enemyUnitIds = Object.keys(enemyUnits);
     let enemyShipGP = enemyUnitIds.map(id => {
@@ -168,7 +164,6 @@ function getFirstMessagePart(ourGuild, enemyGuild, ourUnits, enemyUnits) {
         }
     );
     //enemyguild end
-    console.log("enemyguild end");
 
     var spaces = calculateSpaces([ourGuild.members, ourGuild.raid.sith_raid, ourGuild.gp, ourCharGP, ourShipGP, ourG13, ourG12Fuenf, ourG12Vier, ourG12Drei, ourG12Zwei, ourG12Eins, ourG12Null, ourG11]);
 
@@ -209,8 +204,7 @@ function calculateSpaces(values) {
 
 function getCharacterMessagePart(unitID, ourUnits, enemyUnits) {
     var result = "```";
-
-    console.log("ourguil start");
+    
     //ourguild
 
 
@@ -233,10 +227,7 @@ function getCharacterMessagePart(unitID, ourUnits, enemyUnits) {
     }
 
     //ourguild end
-
-    console.log("ourguil end");
-
-    console.log("enemyguild start");
+    
     //enemyguild
 
     let enemyTotal = 0;
@@ -259,7 +250,6 @@ function getCharacterMessagePart(unitID, ourUnits, enemyUnits) {
     }
 
     //enemyguild end
-    console.log("enemyguild end");
 
     var spaces = calculateSpaces([ourTotal, ourSeven, ourSix, ourFive, ourG13, ourG12, ourG11]);
 
