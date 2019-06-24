@@ -45,8 +45,11 @@ async function compareGuilds(newMessage, ourAllyCode, enemyAllyCode, swapi) {
 
         let charList = JSON.parse(process.env.CHARLIST);
         let shipList = JSON.parse(process.env.SHIPLIST);
+        
+        const allUnitsSwapi = await swapi.fetchData({ "collection":"unitsList", "allycode": enemyAllyCode, "language": process.env.LANGUAGE });
+        let allUnits = allUnitsSwapi.result;
 
-        console.log("ourUnits[charList[0]]", ourUnits[charList[0]]);
+        console.log("allUnits", allUnits);
 
         charList.forEach(
             function (char) {
