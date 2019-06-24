@@ -13,8 +13,26 @@ module.exports = async (message, words, swapi) => {
 
         message.reply("`Update eigene Gilde mit " + ourAllyCode + "`")
             .then(
-                (newMessage) => {
-                    compareGuilds(newMessage, ourAllyCode, enemyAllyCode, swapi);
+            (newMessage) => {
+
+                var asciTable = "+----------------------------------+---------+------------------------+----------------+"
+                    + "\n"
+                    + "| Col1 | Col2 | Col3 | Numeric Column |"
+                    + "\n"
+                    + "+----------------------------------+ --------- +------------------------+ ----------------+"
+                    + "\n"
+                    + "| Value 1 | Value 2 | 123 | 10.0 |"
+                    + "\n"
+                    + "| Separate | cols | with a tab or 4 spaces | -2, 027.1 |"
+                    + "\n"
+                    + "| This is a row with only one cell |         |                        |                |"
+                    + "\n"
+                    + "+----------------------------------+ --------- +------------------------+ ----------------+";
+
+                embed.addField("", "```"+asciTable+"```");
+                newMessage.edit({ embed });
+                return;
+                    //compareGuilds(newMessage, ourAllyCode, enemyAllyCode, swapi);
                 });
         
     } catch (e) {
@@ -42,7 +60,7 @@ async function compareGuilds(newMessage, ourAllyCode, enemyAllyCode, swapi) {
         let enemyUnits = await getAllUnitsForGuild(enemyGuild, swapi);
         
         embed.addField(`${ourGuild.name} vs ${enemyGuild.name}`, getFirstMessagePart(ourGuild, enemyGuild, ourUnits, enemyUnits));
-
+        
         newMessage.edit({ embed });
 
     } catch (e) {
