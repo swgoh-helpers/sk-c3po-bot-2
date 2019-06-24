@@ -34,6 +34,12 @@ async function compareGuilds(newMessage, ourAllyCode, enemyAllyCode, swapi) {
         newMessage.edit("`" + ourGuild.name + " erfolgreich geupdated.`");
 
         const enemyGuildSwapi = await swapi.fetchGuild({ "allycode": enemyAllyCode, "language": process.env.LANGUAGE });
+
+        if (!enemyGuildSwapi.result) {
+            newMessage.edit("`Fehler beim versuch die Gilde mit dem Bündnisscode " + enemyAllyCode + " zu ermitteln!`");
+            return;
+        }
+
         let enemyGuild = enemyGuildSwapi.result[0];
 
         newMessage.edit("`Gilde " + enemyGuild.name + " gefunden! \nAnalysiere Roster...`");
