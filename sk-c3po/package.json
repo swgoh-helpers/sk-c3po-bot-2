@@ -17,6 +17,7 @@
     "request": "2.88.0",
     "googleapis": "40.0.0",
     "body-parser": "1.19.0",
-    "express": "4.17.1"
+    "express": "4.17.1",
+    "api-swgoh-help": "3.3.0"
   }
 }

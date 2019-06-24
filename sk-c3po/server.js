@@ -8,8 +8,15 @@ const express = require('express');
 // about Express itself: https://expressjs.com/
 const app = express();
 
+const ApiSwgohHelp = require('api-swgoh-help');
+const swapi = new ApiSwgohHelp({
+    "username": process.env.API_USERNAME,
+    "password": process.env.API_PASSWORD
+});
+
 const spunkte = require('./commands/spunkte');
 const weeklytitle = require('./commands/weeklytitle');
+const twversus = require('./commands/twversus');
 
 console.log('starting');
 client.on('ready', () => {
@@ -50,6 +57,10 @@ client.on('message', message => {
         case "channelid":
             message.react(thinkingFace);
             message.reply(message.channel.id);
+            break;
+        case "twversus":
+            message.react(thinkingFace);
+            twversus(message, words, swapi);
             break;
         default:
             message.react(thinkingFace);
