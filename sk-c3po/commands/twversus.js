@@ -184,7 +184,7 @@ function calculateSpaces(values)
     values.forEach(
         function (value)
         {
-            spaces.push(' '.repeat( value.length+1-(maxLength) ) );
+            spaces.push(":" + " ".repeat(value.length + 1 - (maxLength)) + " " );
         }
     );
 
