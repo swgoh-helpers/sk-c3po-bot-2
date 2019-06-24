@@ -158,19 +158,19 @@ function getFirstMessagePart(ourGuild, enemyGuild, ourUnits, enemyUnits) {
 
     var spaces = calculateSpaces([ourGuild.members, ourGuild.raid.sith_raid, ourGuild.gp, ourCharGP, ourShipGP, ourG13, ourG12Fuenf, ourG12Vier, ourG12Drei, ourG12Zwei, ourG12Eins, ourG12Null, ourG11]);
 
-    result += `Members:${spaces[0]}${ourGuild.members} vs ${enemyGuild.members}\n`;
-    result += `STR    :${spaces[0]}${ourGuild.raid.sith_raid} vs ${enemyGuild.raid.sith_raid}\n`;
-    result += `GP     :${spaces[0]}${ourGuild.gp} vs ${enemyGuild.gp}\n`;
-    result += `Char-GP:${spaces[0]}${ourCharGP} vs ${enemyCharGP}\n`;
-    result += `Ship-GP:${spaces[0]}${ourShipGP} vs ${enemyShipGP}\n`;
-    result += `G13    :${spaces[0]}${ourG13} vs ${enemyG13}\n`;
-    result += `G12+5  :${spaces[0]}${ourG12Fuenf} vs ${enemyG12Fuenf}\n`;
-    result += `G12+4  :${spaces[0]}${ourG12Vier} vs ${enemyG12Vier}\n`;
-    result += `G12+3  :${spaces[0]}${ourG12Drei} vs ${enemyG12Drei}\n`;
-    result += `G12+2  :${spaces[0]}${ourG12Zwei} vs ${enemyG12Zwei}\n`;
-    result += `G12+1  :${spaces[0]}${ourG12Eins} vs ${enemyG12Eins}\n`;
-    result += `G12+0  :${spaces[0]}${ourG12Null} vs ${enemyG12Null}\n`;
-    result += `G11    :${spaces[0]}${ourG11} vs ${enemyG11}\n`;
+    result += `Members: ${spaces[0]}${ourGuild.members} vs ${enemyGuild.members}\n`;
+    result += `STR    : ${spaces[1]}${ourGuild.raid.sith_raid} vs ${enemyGuild.raid.sith_raid}\n`;
+    result += `GP     : ${spaces[2]}${ourGuild.gp} vs ${enemyGuild.gp}\n`;
+    result += `Char-GP: ${spaces[3]}${ourCharGP} vs ${enemyCharGP}\n`;
+    result += `Ship-GP: ${spaces[4]}${ourShipGP} vs ${enemyShipGP}\n`;
+    result += `G13    : ${spaces[5]}${ourG13} vs ${enemyG13}\n`;
+    result += `G12+5  : ${spaces[6]}${ourG12Fuenf} vs ${enemyG12Fuenf}\n`;
+    result += `G12+4  : ${spaces[7]}${ourG12Vier} vs ${enemyG12Vier}\n`;
+    result += `G12+3  : ${spaces[8]}${ourG12Drei} vs ${enemyG12Drei}\n`;
+    result += `G12+2  : ${spaces[9]}${ourG12Zwei} vs ${enemyG12Zwei}\n`;
+    result += `G12+1  : ${spaces[10]}${ourG12Eins} vs ${enemyG12Eins}\n`;
+    result += `G12+0  : ${spaces[11]}${ourG12Null} vs ${enemyG12Null}\n`;
+    result += `G11    : ${spaces[12]}${ourG11} vs ${enemyG11}\n`;
 
     result += "```";
     return result;
