@@ -94,17 +94,17 @@ function getFirstMessagePart(ourGuild, enemyGuild, ourUnits, enemyUnits) {
     let ourG12Vier = 0;
     let ourG12Fuenf = 0;
     let ourG13 = 0;
-    ourUnits.forEach(
-        function (unit)
+    ourUnitIds.forEach(
+        function (unitID)
         {
-            ourG11 += unit.filter(t => t.gearLevel === 11).length;
-            ourG12Null += unit.filter(t => t.gearLevel === 12 && t.gear.length === 0).length;
-            ourG12Eins += unit.filter(t => t.gearLevel === 12 && t.gear.length === 1).length;
-            ourG12Zwei += unit.filter(t => t.gearLevel === 12 && t.gear.length === 2).length;
-            ourG12Drei += unit.filter(t => t.gearLevel === 12 && t.gear.length === 3).length;
-            ourG12Vier += unit.filter(t => t.gearLevel === 12 && t.gear.length === 4).length;
-            ourG12Fuenf += unit.filter(t => t.gearLevel === 12 && t.gear.length === 5).length;
-            ourG13 += unit.filter(t => t.gearLevel === 13).length;
+            ourG11 += ourUnits[unitID].filter(t => t.gearLevel === 11).length;
+            ourG12Null += ourUnits[unitID].filter(t => t.gearLevel === 12 && t.gear.length === 0).length;
+            ourG12Eins += ourUnits[unitID].filter(t => t.gearLevel === 12 && t.gear.length === 1).length;
+            ourG12Zwei += ourUnits[unitID].filter(t => t.gearLevel === 12 && t.gear.length === 2).length;
+            ourG12Drei += ourUnits[unitID].filter(t => t.gearLevel === 12 && t.gear.length === 3).length;
+            ourG12Vier += ourUnits[unitID].filter(t => t.gearLevel === 12 && t.gear.length === 4).length;
+            ourG12Fuenf += ourUnits[unitID].filter(t => t.gearLevel === 12 && t.gear.length === 5).length;
+            ourG13 += ourUnits[unitID].filter(t => t.gearLevel === 13).length;
         }
     );
     //ourguild end
@@ -112,16 +112,16 @@ function getFirstMessagePart(ourGuild, enemyGuild, ourUnits, enemyUnits) {
     //enemyguild
     let enemyUnitIds = Object.keys(enemyUnits);
     let enemyShipGP = ourUnitIds.map(id => {
-        if (enemyUnitIds[id][0].type === 'SHIP' || enemyUnitIds[id][0].type === 2) {
-            return enemyUnitIds[id].reduce((total, num) => parseInt(parseInt(total || 0) + parseInt(num.gp || 0)), 0);
+        if (enemyUnits[id][0].type === 'SHIP' || enemyUnits[id][0].type === 2) {
+            return enemyUnits[id].reduce((total, num) => parseInt(parseInt(total || 0) + parseInt(num.gp || 0)), 0);
         }
         return 0;
     });
     enemyShipGP = enemyShipGP.filter(s => s).reduce((total, num) => parseInt(parseInt(total) + parseInt(num)), 0);
 
     let enemyCharGP = enemyUnitIds.map(id => {
-        if (enemyUnitIds[id][0].type === 'CHARACTER' || enemyUnitIds[id][0].type === 1) {
-            return enemyUnitIds[id].reduce((total, num) => parseInt(parseInt(total || 0) + parseInt(num.gp || 0)), 0);
+        if (enemyUnits[id][0].type === 'CHARACTER' || enemyUnits[id][0].type === 1) {
+            return enemyUnits[id].reduce((total, num) => parseInt(parseInt(total || 0) + parseInt(num.gp || 0)), 0);
         }
         return 0;
     });
@@ -135,27 +135,33 @@ function getFirstMessagePart(ourGuild, enemyGuild, ourUnits, enemyUnits) {
     let enemyG12Vier = 0;
     let enemyG12Fuenf = 0;
     let enemyG13 = 0;
-    enemyUnits.forEach(
-        function (unit) {
+    enemyUnitIds.forEach(
+        function (unitID) {
 
-            enemyG11 += unit.filter(t => t.gearLevel === 11).length;
-            enemyG12Null += unit.filter(t => t.gearLevel === 12 && t.gear.length === 0).length;
-            enemyG12Eins += unit.filter(t => t.gearLevel === 12 && t.gear.length === 1).length;
-            enemyG12Zwei += unit.filter(t => t.gearLevel === 12 && t.gear.length === 2).length;
-            enemyG12Drei += unit.filter(t => t.gearLevel === 12 && t.gear.length === 3).length;
-            enemyG12Vier += unit.filter(t => t.gearLevel === 12 && t.gear.length === 4).length;
-            enemyG12Fuenf += unit.filter(t => t.gearLevel === 12 && t.gear.length === 5).length;
-            enemyG13 += unit.filter(t => t.gearLevel === 13).length;
+            enemyG11 += enemyUnits[unitID].filter(t => t.gearLevel === 11).length;
+            enemyG12Null += enemyUnits[unitID].filter(t => t.gearLevel === 12 && t.gear.length === 0).length;
+            enemyG12Eins += enemyUnits[unitID].filter(t => t.gearLevel === 12 && t.gear.length === 1).length;
+            enemyG12Zwei += enemyUnits[unitID].filter(t => t.gearLevel === 12 && t.gear.length === 2).length;
+            enemyG12Drei += enemyUnits[unitID].filter(t => t.gearLevel === 12 && t.gear.length === 3).length;
+            enemyG12Vier += enemyUnits[unitID].filter(t => t.gearLevel === 12 && t.gear.length === 4).length;
+            enemyG12Fuenf += enemyUnits[unitID].filter(t => t.gearLevel === 12 && t.gear.length === 5).length;
+            enemyG13 += enemyUnits[unitID].filter(t => t.gearLevel === 13).length;
         }
     );
     //enemyguild end
-
+    
     result += `Members:\t${ourGuild.members}\tvs\t${enemyGuild.members}\n`;
     result += `STR:\t${ourGuild.raid.sith_raid}\tvs\t${enemyGuild.raid.sith_raid}\n`;
     result += `GP:\t${ourGuild.gp}\tvs\t${enemyGuild.gp}\n`;
     result += `Char-GP:\t${ourCharGP}\tvs\t${enemyCharGP}\n`;
     result += `Ship-GP:\t${ourShipGP}\tvs\t${enemyShipGP}\n`;
-    result += `G12:\t${ourG12Null}\tvs\t${enemyG12Null}\n`;
+    result += `G13:\t${ourG13}\tvs\t${enemyG13}\n`;
+    result += `G12+5:\t${ourG12Fuenf}\tvs\t${enemyG12Fuenf}\n`;
+    result += `G12+4:\t${ourG12Vier}\tvs\t${enemyG12Vier}\n`;
+    result += `G12+3:\t${ourG12Drei}\tvs\t${enemyG12Drei}\n`;
+    result += `G12+2:\t${ourG12Zwei}\tvs\t${enemyG12Zwei}\n`;
+    result += `G12+1:\t${ourG12Eins}\tvs\t${enemyG12Eins}\n`;
+    result += `G12+0:\t${ourG12Null}\tvs\t${enemyG12Null}\n`;
     result += `G11:\t${ourG11}\tvs\t${enemyG11}\n`;
 
     result += "```";
