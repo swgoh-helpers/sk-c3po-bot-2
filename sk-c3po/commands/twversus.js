@@ -44,8 +44,8 @@ async function compareGuilds(newMessage, ourAllyCode, enemyAllyCode, swapi) {
 
         newMessage.edit("`Gilde " + enemyGuild.name + " gefunden! \nAnalysiere Roster...`");
 
-        let ourUnits = await getAllUnitsForGuild(ourGuild);
-        let enemyUnits = await getAllUnitsForGuild(enemyGuild);
+        let ourUnits = await getAllUnitsForGuild(ourGuild, swapi);
+        let enemyUnits = await getAllUnitsForGuild(enemyGuild, swapi);
 
         console.log("ourUnits", ourUnits);
 
@@ -57,7 +57,7 @@ async function compareGuilds(newMessage, ourAllyCode, enemyAllyCode, swapi) {
     }
 }
 
-async function getAllUnitsForGuild(guild) {
+async function getAllUnitsForGuild(guild, swapi) {
 
     let allycodes = guild.roster.map(p => p.allyCode);
 
