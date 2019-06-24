@@ -43,6 +43,15 @@ async function compareGuilds(newMessage, ourAllyCode, enemyAllyCode, swapi) {
 
         embed.addField(`${ourGuild.name} vs ${enemyGuild.name}`, getFirstMessagePart(ourGuild, enemyGuild, ourUnits, enemyUnits));
 
+        let charList = JSON.parse(process.env.CHARLIST);
+        let shipList = JSON.parse(process.env.SHIPLIST);
+
+        charList.forEach(
+            function (char) {
+                embed.addField(char, getCharacterMessagePart(char, ourUnits, enemyUnits));
+            }
+        );
+        
         newMessage.edit({ embed });
 
     } catch (e) {
@@ -157,8 +166,6 @@ function getFirstMessagePart(ourGuild, enemyGuild, ourUnits, enemyUnits) {
 
     var spaces = calculateSpaces([ourGuild.members, ourGuild.raid.sith_raid, ourGuild.gp, ourCharGP, ourShipGP, ourG13, ourG12Fuenf, ourG12Vier, ourG12Drei, ourG12Zwei, ourG12Eins, ourG12Null, ourG11]);
 
-    console.log("spaces", spaces);
-
     result += `Members: ${spaces[0]}${ourGuild.members} vs ${enemyGuild.members}\n`;
     result += `STR    : ${spaces[1]}${ourGuild.raid.sith_raid} vs ${enemyGuild.raid.sith_raid}\n`;
     result += `GP     : ${spaces[2]}${ourGuild.gp} vs ${enemyGuild.gp}\n`;
@@ -184,12 +191,9 @@ function calculateSpaces(values) {
     values.forEach(function (value) {
         if (maxLength < value.toString().length) { maxLength = value.toString().length; }
     });
-    console.log("maxLength", maxLength);
-
     values.forEach(
         function (value) {
-            let calcLength = maxLength-value.toString().length;
-            console.log("calcLength", calcLength);
+            let calcLength = maxLength - value.toString().length;
             spaces.push("" + " ".repeat(calcLength));
         }
     );
@@ -197,3 +201,48 @@ function calculateSpaces(values) {
     return spaces;
 }
 
+function getCharacterMessagePart(unitID, ourUnits, enemyUnits) {
+    var result = "```";
+
+    console.log("ourguil start");
+    //ourguild
+
+    let ourTotal = ourUnits[unitID].length;
+    let ourSeven = ourUnits[unitID].filter(t => t.starLevel  === 7).length;
+    let ourSix = ourUnits[unitID].filter(t => t.starLevel  === 6).length;
+    let ourFive = ourUnits[unitID].filter(t => t.starLevel  === 5).length;
+    let ourG13 = ourUnits[unitID].filter(t => t.gearLevel === 13).length;
+    let ourG12 = ourUnits[unitID].filter(t => t.gearLevel === 12).length;
+    let ourG11 = ourUnits[unitID].filter(t => t.gearLevel === 11).length;
+
+    //ourguild end
+
+    console.log("ourguil end");
+
+    console.log("enemyguild start");
+    //enemyguild
+
+    let enemyTotal = enemyUnits[unitID].length;
+    let enemySeven = enemyUnits[unitID].filter(t => t.starLevel === 7).length;
+    let enemySix = enemyUnits[unitID].filter(t => t.starLevel === 6).length;
+    let enemyFive = enemyUnits[unitID].filter(t => t.starLevel === 5).length;
+    let enemyG13 = enemyUnits[unitID].filter(t => t.gearLevel === 13).length;
+    let enemyG12 = enemyUnits[unitID].filter(t => t.gearLevel === 12).length;
+    let enemyG11 = enemyUnits[unitID].filter(t => t.gearLevel === 11).length;
+
+    //enemyguild end
+    console.log("enemyguild end");
+
+    var spaces = calculateSpaces([ourTotal, ourSeven, ourSix, ourFive, ourG13, ourG12, ourG11]);
+
+    result += `Total: ${spaces[0]}${ourTotal} vs ${enemyTotal}\n`;
+    result += `7*   : ${spaces[1]}${ourSeven} vs ${enemySeven}\n`;
+    result += `6*   : ${spaces[2]}${ourSix} vs ${enemySix}\n`;
+    result += `5*   : ${spaces[3]}${ourFive} vs ${enemyFive}\n`;
+    result += `G13  : ${spaces[4]}${ourG13} vs ${enemyG13}\n`;
+    result += `G12  : ${spaces[5]}${ourG12} vs ${enemyG12}\n`;
+    result += `G11  : ${spaces[6]}${ourG11} vs ${enemyG11}\n`;
+
+    result += "```";
+    return result;
+}
