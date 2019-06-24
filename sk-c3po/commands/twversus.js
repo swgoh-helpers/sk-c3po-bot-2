@@ -192,9 +192,9 @@ function getFirstMessagePart(ourGuild, enemyGuild, ourUnits, enemyUnits) {
 
     result += `Members: ${spaces[0]}${ourGuild.members} vs ${enemyGuild.members}\n`;
     result += `STR    : ${spaces[1]}${ourGuild.raid.sith_raid} vs ${enemyGuild.raid.sith_raid}\n`;
-    result += `GP     : ${spaces[2]}${ourGuild.gp} vs ${enemyGuild.gp}\n`;
-    result += `Char-GP: ${spaces[3]}${ourCharGP} vs ${enemyCharGP}\n`;
-    result += `Ship-GP: ${spaces[4]}${ourShipGP} vs ${enemyShipGP}\n`;
+    result += `GP     : ${spaces[2]}${(ourGuild.gp / 1000000).toFixed(2)}M vs ${(enemyGuild.gp/1000000).toFixed(2)}T\n`;
+    result += `Char-GP: ${spaces[3]}${(ourCharGP / 1000).toFixed(2)}T vs ${(enemyCharGP/1000).toFixed(2)}T\n`;
+    result += `Ship - GP: ${spaces[4]} ${(ourShipGP / 1000).toFixed(2)}T vs ${(enemyShipGP/1000).toFixed(2)}T\n`;
     result += `G13    : ${spaces[5]}${ourG13} vs ${enemyG13}\n`;
     result += `G12+5  : ${spaces[6]}${ourG12Fuenf} vs ${enemyG12Fuenf}\n`;
     result += `G12+4  : ${spaces[7]}${ourG12Vier} vs ${enemyG12Vier}\n`;
