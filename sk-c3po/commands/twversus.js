@@ -29,6 +29,7 @@ module.exports = async (message, words, swapi) => {
                     + "\n"
                     + "+----------------------------------+ --------- +------------------------+ ----------------+";
 
+                var embed = new Discord.RichEmbed();
                 embed.addField("", "```"+asciTable+"```");
                 newMessage.edit({ embed });
                 return;
