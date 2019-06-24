@@ -47,7 +47,7 @@ async function compareGuilds(newMessage, ourAllyCode, enemyAllyCode, swapi) {
 
     } catch (e) {
         newMessage.edit(e.message);
-        console.log(e.message);
+        console.error(e);
     }
 }
 
@@ -68,11 +68,12 @@ async function getAllUnitsForGuild(guild, swapi) {
 function getFirstMessagePart(ourGuild, enemyGuild, ourUnits, enemyUnits) {
     var result = "```";
 
+    console.log("ourguil end");
     //ourguild
     let ourUnitIds = Object.keys(ourUnits);
-    console.log("ourUnits[ourUnitIds[0]]", ourUnits[ourUnitIds[0]]);
+
     let ourShipGP = ourUnitIds.map(id => {
-        if (ourUnits[id][0].type === 'SHIP' || ourUnits[id][0].type === 2) {
+        if (ourUnits[id] && (ourUnits[id][0].type === 'SHIP' || ourUnits[id][0].type === 2) ) {
             return ourUnits[id].reduce((total, num) => parseInt(parseInt(total || 0) + parseInt(num.gp || 0)), 0);
         }
         return 0;
@@ -80,7 +81,7 @@ function getFirstMessagePart(ourGuild, enemyGuild, ourUnits, enemyUnits) {
     ourShipGP = ourShipGP.filter(s => s).reduce((total, num) => parseInt(parseInt(total) + parseInt(num)), 0);
 
     let ourCharGP = ourUnitIds.map(id => {
-        if (ourUnits[id][0].type === 'CHARACTER' || ourUnits[id][0].type === 1) {
+        if (ourUnits[id] && (ourUnits[id][0].type === 'CHARACTER' || ourUnits[id][0].type === 1) ) {
             return ourUnits[id].reduce((total, num) => parseInt(parseInt(total || 0) + parseInt(num.gp || 0)), 0);
         }
         return 0;
@@ -98,17 +99,25 @@ function getFirstMessagePart(ourGuild, enemyGuild, ourUnits, enemyUnits) {
     ourUnitIds.forEach(
         function (unitID)
         {
-            ourG11 += ourUnits[unitID].filter(t => t.gearLevel === 11).length;
-            ourG12Null += ourUnits[unitID].filter(t => t.gearLevel === 12 && t.gear.length === 0).length;
-            ourG12Eins += ourUnits[unitID].filter(t => t.gearLevel === 12 && t.gear.length === 1).length;
-            ourG12Zwei += ourUnits[unitID].filter(t => t.gearLevel === 12 && t.gear.length === 2).length;
-            ourG12Drei += ourUnits[unitID].filter(t => t.gearLevel === 12 && t.gear.length === 3).length;
-            ourG12Vier += ourUnits[unitID].filter(t => t.gearLevel === 12 && t.gear.length === 4).length;
-            ourG12Fuenf += ourUnits[unitID].filter(t => t.gearLevel === 12 && t.gear.length === 5).length;
-            ourG13 += ourUnits[unitID].filter(t => t.gearLevel === 13).length;
+            if (ourUnits[unitID]) {
+                ourG11 += ourUnits[unitID].filter(t => t.gearLevel === 11).length;
+                ourG12Null += ourUnits[unitID].filter(t => t.gearLevel === 12 && t.gear.length === 0).length;
+                ourG12Eins += ourUnits[unitID].filter(t => t.gearLevel === 12 && t.gear.length === 1).length;
+                ourG12Zwei += ourUnits[unitID].filter(t => t.gearLevel === 12 && t.gear.length === 2).length;
+                ourG12Drei += ourUnits[unitID].filter(t => t.gearLevel === 12 && t.gear.length === 3).length;
+                ourG12Vier += ourUnits[unitID].filter(t => t.gearLevel === 12 && t.gear.length === 4).length;
+                ourG12Fuenf += ourUnits[unitID].filter(t => t.gearLevel === 12 && t.gear.length === 5).length;
+                ourG13 += ourUnits[unitID].filter(t => t.gearLevel === 13).length;
+            }
+            else
+            {
+                console.log(`no result for ${unitID}`);
+            }
         }
     );
     //ourguild end
+
+    console.log("ourguil end");
 
     //enemyguild
     let enemyUnitIds = Object.keys(enemyUnits);
