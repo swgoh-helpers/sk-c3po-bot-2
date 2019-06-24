@@ -30,7 +30,7 @@ module.exports = async (message, words, swapi) => {
                     + "+----------------------------------+ --------- +------------------------+ ----------------+";
 
                 var embed = new Discord.RichEmbed();
-                embed.addField("", "```"+asciTable+"```");
+                embed.addField("Table", "```"+asciTable+"```");
                 newMessage.edit({ embed });
                 return;
                     //compareGuilds(newMessage, ourAllyCode, enemyAllyCode, swapi);
