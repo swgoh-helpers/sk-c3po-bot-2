@@ -156,19 +156,19 @@ function getFirstMessagePart(ourGuild, enemyGuild, ourUnits, enemyUnits) {
     //enemyguild end
     console.log("enemyguild end");
     
-    result += `Members  :   ${ourGuild.members} vs ${enemyGuild.members}\n`;
-    result += `STR      :   ${ourGuild.raid.sith_raid} vs ${enemyGuild.raid.sith_raid}\n`;
-    result += `GP       :   ${ourGuild.gp} vs ${enemyGuild.gp}\n`;
-    result += `Char-GP  :   ${ourCharGP} vs ${enemyCharGP}\n`;
-    result += `Ship-GP  :   ${ourShipGP} vs ${enemyShipGP}\n`;
-    result += `G13      :   ${ourG13} vs ${enemyG13}\n`;
-    result += `G12+5    :   ${ourG12Fuenf} vs ${enemyG12Fuenf}\n`;
-    result += `G12+4    :   ${ourG12Vier} vs ${enemyG12Vier}\n`;
-    result += `G12+3    :   ${ourG12Drei} vs ${enemyG12Drei}\n`;
-    result += `G12+2    :   ${ourG12Zwei} vs ${enemyG12Zwei}\n`;
-    result += `G12+1    :   ${ourG12Eins} vs ${enemyG12Eins}\n`;
-    result += `G12+0    :   ${ourG12Null} vs ${enemyG12Null}\n`;
-    result += `G11      :   ${ourG11} vs ${enemyG11}\n`;
+    result += `Members  |   ${ourGuild.members} vs ${enemyGuild.members}\n`;
+    result += `STR      |   ${ourGuild.raid.sith_raid} vs ${enemyGuild.raid.sith_raid}\n`;
+    result += `GP       |   ${ourGuild.gp} vs ${enemyGuild.gp}\n`;
+    result += `Char-GP  |   ${ourCharGP} vs ${enemyCharGP}\n`;
+    result += `Ship-GP  |   ${ourShipGP} vs ${enemyShipGP}\n`;
+    result += `G13      |   ${ourG13} vs ${enemyG13}\n`;
+    result += `G12+5    |   ${ourG12Fuenf} vs ${enemyG12Fuenf}\n`;
+    result += `G12+4    |   ${ourG12Vier} vs ${enemyG12Vier}\n`;
+    result += `G12+3    |   ${ourG12Drei} vs ${enemyG12Drei}\n`;
+    result += `G12+2    |   ${ourG12Zwei} vs ${enemyG12Zwei}\n`;
+    result += `G12+1    |   ${ourG12Eins} vs ${enemyG12Eins}\n`;
+    result += `G12+0    |   ${ourG12Null} vs ${enemyG12Null}\n`;
+    result += `G11      |   ${ourG11} vs ${enemyG11}\n`;
 
     result += "```";
     return result;
