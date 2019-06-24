@@ -182,13 +182,13 @@ function calculateSpaces(values) {
     let spaces = [];
 
     values.forEach(function (value) {
-        if (maxLength < value.length) { maxLength = value.length; }
+        if (maxLength < value.toString().length) { maxLength = value.toString().length; }
     });
     console.log("maxLength", maxLength);
 
     values.forEach(
         function (value) {
-            let calcLength = value.length + 1 - (maxLength);
+            let calcLength = value.toString().length+1-maxLength;
             console.log("calcLength", calcLength);
             spaces.push("" + " ".repeat(calcLength));
         }
