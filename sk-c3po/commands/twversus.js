@@ -96,7 +96,7 @@ function getFirstMessagePart(ourGuild, enemyGuild, ourUnits, enemyUnits) {
     let ourG12Vier = 0;
     let ourG12Fuenf = 0;
     let ourG13 = 0;
-    ourUnits.foreach(
+    ourUnits.forEach(
         function (unit)
         {
             ourG11 += unit.filter(t => t.gearLevel === 11).length;
@@ -137,7 +137,7 @@ function getFirstMessagePart(ourGuild, enemyGuild, ourUnits, enemyUnits) {
     let enemyG12Vier = 0;
     let enemyG12Fuenf = 0;
     let enemyG13 = 0;
-    enemyUnits.foreach(
+    enemyUnits.forEach(
         function (unit) {
 
             enemyG11 += unit.filter(t => t.gearLevel === 11).length;
