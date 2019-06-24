@@ -156,19 +156,19 @@ function getFirstMessagePart(ourGuild, enemyGuild, ourUnits, enemyUnits) {
     //enemyguild end
     console.log("enemyguild end");
     
-    result += `Members:\t${ourGuild.members}\tvs\t${enemyGuild.members}\n`;
-    result += `STR:\t${ourGuild.raid.sith_raid}\tvs\t${enemyGuild.raid.sith_raid}\n`;
-    result += `GP:\t${ourGuild.gp}\tvs\t${enemyGuild.gp}\n`;
-    result += `Char-GP:\t${ourCharGP}\tvs\t${enemyCharGP}\n`;
-    result += `Ship-GP:\t${ourShipGP}\tvs\t${enemyShipGP}\n`;
-    result += `G13:\t${ourG13}\tvs\t${enemyG13}\n`;
-    result += `G12+5:\t${ourG12Fuenf}\tvs\t${enemyG12Fuenf}\n`;
-    result += `G12+4:\t${ourG12Vier}\tvs\t${enemyG12Vier}\n`;
-    result += `G12+3:\t${ourG12Drei}\tvs\t${enemyG12Drei}\n`;
-    result += `G12+2:\t${ourG12Zwei}\tvs\t${enemyG12Zwei}\n`;
-    result += `G12+1:\t${ourG12Eins}\tvs\t${enemyG12Eins}\n`;
-    result += `G12+0:\t${ourG12Null}\tvs\t${enemyG12Null}\n`;
-    result += `G11:\t${ourG11}\tvs\t${enemyG11}\n`;
+    result += `Members: ${ourGuild.members}vs${enemyGuild.members}\n`;
+    result += `STR: ${ourGuild.raid.sith_raid}vs${enemyGuild.raid.sith_raid}\n`;
+    result += `GP: ${ourGuild.gp}vs${enemyGuild.gp}\n`;
+    result += `Char-GP: ${ourCharGP}vs${enemyCharGP}\n`;
+    result += `Ship-GP: ${ourShipGP}vs${enemyShipGP}\n`;
+    result += `G13: ${ourG13}vs${enemyG13}\n`;
+    result += `G12+5: ${ourG12Fuenf}vs${enemyG12Fuenf}\n`;
+    result += `G12+4: ${ourG12Vier}vs${enemyG12Vier}\n`;
+    result += `G12+3: ${ourG12Drei}vs${enemyG12Drei}\n`;
+    result += `G12+2: ${ourG12Zwei}vs${enemyG12Zwei}\n`;
+    result += `G12+1: ${ourG12Eins}vs${enemyG12Eins}\n`;
+    result += `G12+0: ${ourG12Null}vs${enemyG12Null}\n`;
+    result += `G11: ${ourG11}vs${enemyG11}\n`;
 
     result += "```";
     return result;
