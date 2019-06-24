@@ -158,6 +158,8 @@ function getFirstMessagePart(ourGuild, enemyGuild, ourUnits, enemyUnits) {
 
     var spaces = calculateSpaces([ourGuild.members, ourGuild.raid.sith_raid, ourGuild.gp, ourCharGP, ourShipGP, ourG13, ourG12Fuenf, ourG12Vier, ourG12Drei, ourG12Zwei, ourG12Eins, ourG12Null, ourG11]);
 
+    console.log("spaces", spaces);
+
     result += `Members: ${spaces[0]}${ourGuild.members} vs ${enemyGuild.members}\n`;
     result += `STR    : ${spaces[1]}${ourGuild.raid.sith_raid} vs ${enemyGuild.raid.sith_raid}\n`;
     result += `GP     : ${spaces[2]}${ourGuild.gp} vs ${enemyGuild.gp}\n`;
@@ -180,11 +182,14 @@ function calculateSpaces(values)
 {
     let maxLength = values.sort(function (a, b) { return b.length - a.length; })[0].length;
     let spaces = [];
+    console.log("maxLength", maxLength);
 
     values.forEach(
         function (value)
         {
-            spaces.push(":" + " ".repeat(value.length + 1 - (maxLength)) + " " );
+            let calcLength = value.length + 1 - (maxLength);
+            console.log("calcLength", calcLength);
+            spaces.push("" + " ".repeat(calcLength));
         }
     );
 
