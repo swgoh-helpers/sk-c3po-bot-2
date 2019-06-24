@@ -40,7 +40,10 @@ async function compareGuilds(newMessage, ourAllyCode, enemyAllyCode, swapi) {
 
         let ourUnits = await getAllUnitsForGuild(ourGuild, swapi);
         let enemyUnits = await getAllUnitsForGuild(enemyGuild, swapi);
-        
+
+        console.log("ourUnits", ourUnits);
+        console.log("enemyUnits", enemyUnits);
+
         embed.addField(`${ourGuild.name} vs ${enemyGuild.name}`, getFirstMessagePart(ourGuild, enemyGuild, ourUnits, enemyUnits));
 
         newMessage.edit({ embed });
