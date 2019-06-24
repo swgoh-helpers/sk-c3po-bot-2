@@ -188,7 +188,7 @@ function getFirstMessagePart(ourGuild, enemyGuild, ourUnits, enemyUnits) {
     );
     //enemyguild end
 
-    var spaces = calculateSpaces([ourGuild.members, ourGuild.raid.sith_raid, ourGuild.gp, ourCharGP, ourShipGP, ourG13, ourG12Fuenf, ourG12Vier, ourG12Drei, ourG12Zwei, ourG12Eins, ourG12Null, ourG11]);
+    var spaces = calculateSpaces([ourGuild.members, ourGuild.raid.sith_raid, `${(ourGuild.gp / 1000000).toFixed(2)}M`, `${(ourCharGP / 1000).toFixed(2)}T`, `${(ourCharGP / 1000).toFixed(2)}T`, ourG13, ourG12Fuenf, ourG12Vier, ourG12Drei, ourG12Zwei, ourG12Eins, ourG12Null, ourG11]);
 
     result += `Members: ${spaces[0]}${ourGuild.members} vs ${enemyGuild.members}\n`;
     result += `STR    : ${spaces[1]}${ourGuild.raid.sith_raid} vs ${enemyGuild.raid.sith_raid}\n`;
