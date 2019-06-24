@@ -216,7 +216,7 @@ function getCharacterMessagePart(unitID, ourUnits, enemyUnits) {
     let ourG12 = 0;
     let ourG11 = 0;
 
-    if (ourUnits[unitID] !== null) {
+    if (ourUnits[unitID]) {
         ourTotal = ourUnits[unitID].length;
         ourSeven = ourUnits[unitID].filter(t => t.starLevel === 7).length;
         ourSix = ourUnits[unitID].filter(t => t.starLevel === 6).length;
@@ -241,7 +241,7 @@ function getCharacterMessagePart(unitID, ourUnits, enemyUnits) {
     let enemyG12 = 0;
     let enemyG11 = 0;
 
-    if (enemyUnits[unitID] !== null)
+    if (enemyUnits[unitID])
     {
         enemyTotal = enemyUnits[unitID].length;
         enemySeven = enemyUnits[unitID].filter(t => t.starLevel === 7).length;
