@@ -56,12 +56,22 @@ async function compareGuilds(newMessage, ourAllyCode, enemyAllyCode, swapi) {
             "match": { "rarity": 7, "obtainable": true, "obtainableTime": 0 }
         });
         let allUnits = allUnitsSwapi.result;
-        
+
         charList.forEach(
             function (char) {
-                let charName = allUnits.find(unit => unit.baseId === char);
-                newMessage.edit("`Vergleiche " + charName ? charName : char + "...`");
-                embed.addField(charName ? charName : char, getCharacterMessagePart(char, ourUnits, enemyUnits), true);
+                let charUnit = allUnits.find(unit => unit.baseId === char);
+                let charName = charUnit ? charUnit.nameKey : char;
+                newMessage.edit("`Vergleiche " + charName + "...`");
+                embed.addField(charName, getCharacterMessagePart(char, ourUnits, enemyUnits), true);
+            }
+        );
+
+        shipList.forEach(
+            function (ship) {
+                let shipUnit = allUnits.find(unit => unit.baseId === ship);
+                let charName = shipUnit ? shipUnit.nameKey : ship;
+                newMessage.edit("`Vergleiche " + charName + "...`");
+                embed.addField(charName, getShipMessagePart(ship, ourUnits, enemyUnits), true);
             }
         );
         
@@ -267,6 +277,53 @@ function getCharacterMessagePart(unitID, ourUnits, enemyUnits) {
     result += `G13  : ${spaces[4]}${ourG13} vs ${enemyG13}\n`;
     result += `G12  : ${spaces[5]}${ourG12} vs ${enemyG12}\n`;
     result += `G11  : ${spaces[6]}${ourG11} vs ${enemyG11}\n`;
+
+    result += "```";
+    return result;
+}
+
+function getShipMessagePart(unitID, ourUnits, enemyUnits) {
+    var result = "```";
+
+    //ourguild
+
+
+    let ourTotal = 0;
+    let ourSeven = 0;
+    let ourSix = 0;
+    let ourFive = 0;
+
+    if (ourUnits[unitID]) {
+        ourTotal = ourUnits[unitID].length;
+        ourSeven = ourUnits[unitID].filter(t => t.starLevel === 7).length;
+        ourSix = ourUnits[unitID].filter(t => t.starLevel === 6).length;
+        ourFive = ourUnits[unitID].filter(t => t.starLevel === 5).length;
+    }
+
+    //ourguild end
+
+    //enemyguild
+
+    let enemyTotal = 0;
+    let enemySeven = 0;
+    let enemySix = 0;
+    let enemyFive = 0;
+
+    if (enemyUnits[unitID]) {
+        enemyTotal = enemyUnits[unitID].length;
+        enemySeven = enemyUnits[unitID].filter(t => t.starLevel === 7).length;
+        enemySix = enemyUnits[unitID].filter(t => t.starLevel === 6).length;
+        enemyFive = enemyUnits[unitID].filter(t => t.starLevel === 5).length;
+    }
+
+    //enemyguild end
+
+    var spaces = calculateSpaces([ourTotal, ourSeven, ourSix, ourFive]);
+
+    result += `Total: ${spaces[0]}${ourTotal} vs ${enemyTotal}\n`;
+    result += `7*   : ${spaces[1]}${ourSeven} vs ${enemySeven}\n`;
+    result += `6*   : ${spaces[2]}${ourSix} vs ${enemySix}\n`;
+    result += `5*   : ${spaces[3]}${ourFive} vs ${enemyFive}\n`;
 
     result += "```";
     return result;
