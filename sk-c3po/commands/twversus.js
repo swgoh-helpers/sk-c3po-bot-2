@@ -188,7 +188,7 @@ function calculateSpaces(values) {
 
     values.forEach(
         function (value) {
-            let calcLength = value.toString().length+1-maxLength;
+            let calcLength = maxLength-value.toString().length;
             console.log("calcLength", calcLength);
             spaces.push("" + " ".repeat(calcLength));
         }
