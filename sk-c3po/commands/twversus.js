@@ -56,9 +56,7 @@ async function compareGuilds(newMessage, ourAllyCode, enemyAllyCode, swapi) {
             "match": { "rarity": 7, "obtainable": true, "obtainableTime": 0 }
         });
         let allUnits = allUnitsSwapi.result;
-
-        console.log("allUnitsSwapi", allUnitsSwapi);
-
+        
         charList.forEach(
             function (char) {
                 let charName = allUnits.find(unit => unit.baseId === char);
