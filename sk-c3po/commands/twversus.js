@@ -61,8 +61,9 @@ async function compareGuilds(newMessage, ourAllyCode, enemyAllyCode, swapi) {
 
         charList.forEach(
             function (char) {
-                newMessage.edit("`Vergleiche " + char + "...`");
-                embed.addField(char, getCharacterMessagePart(char, ourUnits, enemyUnits), true);
+                let charName = allUnits.find(unit => unit.baseId === char);
+                newMessage.edit("`Vergleiche " + charName ? charName : char + "...`");
+                embed.addField(charName ? charName : char, getCharacterMessagePart(char, ourUnits, enemyUnits), true);
             }
         );
         
