@@ -207,13 +207,24 @@ function getCharacterMessagePart(unitID, ourUnits, enemyUnits) {
     console.log("ourguil start");
     //ourguild
 
-    let ourTotal = ourUnits[unitID].length;
-    let ourSeven = ourUnits[unitID].filter(t => t.starLevel  === 7).length;
-    let ourSix = ourUnits[unitID].filter(t => t.starLevel  === 6).length;
-    let ourFive = ourUnits[unitID].filter(t => t.starLevel  === 5).length;
-    let ourG13 = ourUnits[unitID].filter(t => t.gearLevel === 13).length;
-    let ourG12 = ourUnits[unitID].filter(t => t.gearLevel === 12).length;
-    let ourG11 = ourUnits[unitID].filter(t => t.gearLevel === 11).length;
+
+    let ourTotal = 0;
+    let ourSeven = 0;
+    let ourSix = 0;
+    let ourFive = 0;
+    let ourG13 = 0;
+    let ourG12 = 0;
+    let ourG11 = 0;
+
+    if (ourUnits[unitID] !== null) {
+        ourTotal = ourUnits[unitID].length;
+        ourSeven = ourUnits[unitID].filter(t => t.starLevel === 7).length;
+        ourSix = ourUnits[unitID].filter(t => t.starLevel === 6).length;
+        ourFive = ourUnits[unitID].filter(t => t.starLevel === 5).length;
+        ourG13 = ourUnits[unitID].filter(t => t.gearLevel === 13).length;
+        ourG12 = ourUnits[unitID].filter(t => t.gearLevel === 12).length;
+        ourG11 = ourUnits[unitID].filter(t => t.gearLevel === 11).length;
+    }
 
     //ourguild end
 
@@ -222,13 +233,24 @@ function getCharacterMessagePart(unitID, ourUnits, enemyUnits) {
     console.log("enemyguild start");
     //enemyguild
 
-    let enemyTotal = enemyUnits[unitID].length;
-    let enemySeven = enemyUnits[unitID].filter(t => t.starLevel === 7).length;
-    let enemySix = enemyUnits[unitID].filter(t => t.starLevel === 6).length;
-    let enemyFive = enemyUnits[unitID].filter(t => t.starLevel === 5).length;
-    let enemyG13 = enemyUnits[unitID].filter(t => t.gearLevel === 13).length;
-    let enemyG12 = enemyUnits[unitID].filter(t => t.gearLevel === 12).length;
-    let enemyG11 = enemyUnits[unitID].filter(t => t.gearLevel === 11).length;
+    let enemyTotal = 0;
+    let enemySeven = 0;
+    let enemySix = 0;
+    let enemyFive = 0;
+    let enemyG13 = 0;
+    let enemyG12 = 0;
+    let enemyG11 = 0;
+
+    if (enemyUnits[unitID] !== null)
+    {
+        enemyTotal = enemyUnits[unitID].length;
+        enemySeven = enemyUnits[unitID].filter(t => t.starLevel === 7).length;
+        enemySix = enemyUnits[unitID].filter(t => t.starLevel === 6).length;
+        enemyFive = enemyUnits[unitID].filter(t => t.starLevel === 5).length;
+        enemyG13 = enemyUnits[unitID].filter(t => t.gearLevel === 13).length;
+        enemyG12 = enemyUnits[unitID].filter(t => t.gearLevel === 12).length;
+        enemyG11 = enemyUnits[unitID].filter(t => t.gearLevel === 11).length;
+    }
 
     //enemyguild end
     console.log("enemyguild end");
