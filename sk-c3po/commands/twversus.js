@@ -14,26 +14,7 @@ module.exports = async (message, words, swapi) => {
         message.reply("`Update eigene Gilde mit " + ourAllyCode + "`")
             .then(
             (newMessage) => {
-
-                var asciTable = "+----------------------------------+---------+------------------------+----------------+"
-                    + "\n"
-                    + "| Col1 | Col2 | Col3 | Numeric Column |"
-                    + "\n"
-                    + "+----------------------------------+ --------- +------------------------+ ----------------+"
-                    + "\n"
-                    + "| Value 1 | Value 2 | 123 | 10.0 |"
-                    + "\n"
-                    + "| Separate | cols | with a tab or 4 spaces | -2, 027.1 |"
-                    + "\n"
-                    + "| This is a row with only one cell |         |                        |                |"
-                    + "\n"
-                    + "+----------------------------------+ --------- +------------------------+ ----------------+";
-
-                var embed = new Discord.RichEmbed();
-                embed.addField("Table", "```"+asciTable+"```");
-                newMessage.edit({ embed });
-                return;
-                    //compareGuilds(newMessage, ourAllyCode, enemyAllyCode, swapi);
+                    compareGuilds(newMessage, ourAllyCode, enemyAllyCode, swapi);
                 });
         
     } catch (e) {
@@ -174,21 +155,39 @@ function getFirstMessagePart(ourGuild, enemyGuild, ourUnits, enemyUnits) {
     );
     //enemyguild end
     console.log("enemyguild end");
-    
-    result += `Members  |   ${ourGuild.members} vs ${enemyGuild.members}\n`;
-    result += `STR      |   ${ourGuild.raid.sith_raid} vs ${enemyGuild.raid.sith_raid}\n`;
-    result += `GP       |   ${ourGuild.gp} vs ${enemyGuild.gp}\n`;
-    result += `Char-GP  |   ${ourCharGP} vs ${enemyCharGP}\n`;
-    result += `Ship-GP  |   ${ourShipGP} vs ${enemyShipGP}\n`;
-    result += `G13      |   ${ourG13} vs ${enemyG13}\n`;
-    result += `G12+5    |   ${ourG12Fuenf} vs ${enemyG12Fuenf}\n`;
-    result += `G12+4    |   ${ourG12Vier} vs ${enemyG12Vier}\n`;
-    result += `G12+3    |   ${ourG12Drei} vs ${enemyG12Drei}\n`;
-    result += `G12+2    |   ${ourG12Zwei} vs ${enemyG12Zwei}\n`;
-    result += `G12+1    |   ${ourG12Eins} vs ${enemyG12Eins}\n`;
-    result += `G12+0    |   ${ourG12Null} vs ${enemyG12Null}\n`;
-    result += `G11      |   ${ourG11} vs ${enemyG11}\n`;
+
+    var spaces = calculateSpaces([ourGuild.members, ourGuild.raid.sith_raid, ourGuild.gp, ourCharGP, ourShipGP, ourG13, ourG12Fuenf, ourG12Vier, ourG12Drei, ourG12Zwei, ourG12Eins, ourG12Null, ourG11]);
+
+    result += `Members:${spaces[0]}${ourGuild.members} vs ${enemyGuild.members}\n`;
+    result += `STR    :${spaces[0]}${ourGuild.raid.sith_raid} vs ${enemyGuild.raid.sith_raid}\n`;
+    result += `GP     :${spaces[0]}${ourGuild.gp} vs ${enemyGuild.gp}\n`;
+    result += `Char-GP:${spaces[0]}${ourCharGP} vs ${enemyCharGP}\n`;
+    result += `Ship-GP:${spaces[0]}${ourShipGP} vs ${enemyShipGP}\n`;
+    result += `G13    :${spaces[0]}${ourG13} vs ${enemyG13}\n`;
+    result += `G12+5  :${spaces[0]}${ourG12Fuenf} vs ${enemyG12Fuenf}\n`;
+    result += `G12+4  :${spaces[0]}${ourG12Vier} vs ${enemyG12Vier}\n`;
+    result += `G12+3  :${spaces[0]}${ourG12Drei} vs ${enemyG12Drei}\n`;
+    result += `G12+2  :${spaces[0]}${ourG12Zwei} vs ${enemyG12Zwei}\n`;
+    result += `G12+1  :${spaces[0]}${ourG12Eins} vs ${enemyG12Eins}\n`;
+    result += `G12+0  :${spaces[0]}${ourG12Null} vs ${enemyG12Null}\n`;
+    result += `G11    :${spaces[0]}${ourG11} vs ${enemyG11}\n`;
 
     result += "```";
     return result;
 }
+
+function calculateSpaces(values)
+{
+    let maxLength = values.sort(function (a, b) { return b.length - a.length; })[0].length;
+    let spaces = [];
+
+    values.forEach(
+        function (value)
+        {
+            spaces.push(' '.repeat( value.length+1-(maxLength) ) );
+        }
+    );
+
+    return spaces;
+}
+
