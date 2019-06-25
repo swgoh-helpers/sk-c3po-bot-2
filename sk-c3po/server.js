@@ -46,11 +46,11 @@ client.on('message', message => {
         case "help":
             message.react(thinkingFace);
             message.channel.send("```"
-                + "channelid - zeigt die momentane channelid"
-                + "guildid - zeigt die momentane channelid"
-                + "twversus {bündniscode} - vergleicht zwei gilden"
-                + "charspeed {charakter} - zeigt das Tempo des Charakter"
-                + "charhealth {charakter1} - zeigt die Gesundheit des Charakter"
+                + "channelid - zeigt die momentane channelid\n"
+                + "guildid - zeigt die momentane channelid\n"
+                + "twversus {buendniscode} - vergleicht zwei gilden\n"
+                + "charspeed {charakter} - zeigt das Tempo des Charakter\n"
+                + "charhealth {charakter1} - zeigt die Gesundheit des Charakter\n"
                 +"```");
             break;
         case "spunkte":
@@ -71,26 +71,31 @@ client.on('message', message => {
             break;
         case "charspeed":
             message.react(thinkingFace);
-            var allWords = message.content.slice(praefix.length + "charspeed".length + 1).split(",");
-            var charWords = allWords.split(",");
-            var allycode = 0;
+            var allWords = message.content.slice(praefix.length + "charspeed".length + 1).split("=");
+            var charWords = [];
+            var allycode = -1;
 
-            if (allWords.length === 2)
-            {
+            if (allWords.length === 2) {
                 allycode = allWords[0];
                 charWords = allWords[1].split(",");
+            }
+            else {
+                charWords = allWords.split(",");
             }
             charspeed(message, charWords, swapi, allycode);
             break;
         case "charhealth":
             message.react(thinkingFace);
-            var allWordsH = message.content.slice(praefix.length + "charhealth".length + 1).split(",");
-            var charWordsH = allWordsH.split(",");
-            var allycodeH = 0;
+            var allWordsH = message.content.slice(praefix.length + "charhealth".length + 1).split("=");
+            var charWordsH = [];
+            var allycodeH = -1;
 
             if (allWordsH.length === 2) {
                 allycodeH = allWordsH[0];
                 charWordsH = allWordsH[1].split(",");
+            }
+            else {
+                charWordsH = charWordsH.split(",");
             }
             
             charhealth(message, charWordsH, swapi, allycodeH);
