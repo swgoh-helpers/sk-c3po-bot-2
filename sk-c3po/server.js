@@ -118,7 +118,7 @@ client.on('message', message => {
 
 
     } catch (e) {
-        message.reply(e.message);
+        message.reply("Fehler: " + e.message);
         console.error(e);
     }
 
