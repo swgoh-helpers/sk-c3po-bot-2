@@ -76,6 +76,7 @@ async function getGuildUnits(newMessage, charWords, ourAllyCode, swapi) {
             }
         ).getBody('utf8').then(JSON.parse).done(function (res) {
             console.log("res", res);
+            console.log("res stringyfied", JSON.stringify(res));
             
             embed.addField(foundUnits[0].nameKey, foundUnits[0].nameKey, true);
             
