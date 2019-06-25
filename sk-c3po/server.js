@@ -51,6 +51,10 @@ client.on('message', message => {
             message.react(thinkingFace);
             message.reply(message.channel.id);
             break;
+        case "guildid":
+            message.react(thinkingFace);
+            message.reply(message.guild.id);
+            break;
         case "twversus":
             message.react(thinkingFace);
             twversus(message, words, swapi);
