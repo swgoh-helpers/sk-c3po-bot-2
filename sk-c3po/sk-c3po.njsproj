@@ -33,6 +33,7 @@
     <Compile Include="commands\twversus.js" />
     <Compile Include="commands\weeklytitle.js" />
     <Compile Include="commands\spunkte.js" />
+    <Compile Include="webServer.js" />
     <Compile Include="server.js" />
     <Content Include="package.json" />
     <Content Include="Procfile" />

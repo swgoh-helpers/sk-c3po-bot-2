@@ -1,13 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
-const bodyParser = require('body-parser');
-const express = require('express');
-
-// create Express app
-// about Express itself: https://expressjs.com/
-const app = express();
-
 const ApiSwgohHelp = require('api-swgoh-help');
 const swapi = new ApiSwgohHelp({
     "username": process.env.API_USERNAME,
@@ -73,32 +66,3 @@ client.on('message', message => {
 
 // THIS  MUST  BE  THIS  WAY
 client.login(process.env.BOT_TOKEN);//BOT_TOKEN is the Client Secret
-
-// create application/json parser
-const jsonParser = bodyParser.json();
-
-// this is for external commands
-app.post('/command', jsonParser, function (req, res) {
-
-    console.log('command recieved!');
-    res.send({ status: 200 });
-    
-    var command = req.body;
-    console.log("command", command);
-
-    switch (command.command) {
-        case "weekly":
-            weeklytitle(client);
-            break;
-        default:
-            //ignore it
-            break;
-    }
-
-});
-
-// listen on port
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-    console.log(`listening on ${port}`);
-});
