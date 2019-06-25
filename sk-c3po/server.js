@@ -30,6 +30,8 @@ client.on('message', message => {
     if (message.author.bot) { return; }
     if (!message.content.startsWith(praefix)) { return; }
 
+    try
+    {
     var messageWithoutPraefix = message.content.slice(praefix.length);
 
     var words = messageWithoutPraefix.split(" ");
@@ -112,6 +114,12 @@ client.on('message', message => {
             message.react(thinkingFace);
             message.channel.send("Ich spreche diese Sprache leider nicht.");
             break;
+        }
+
+
+    } catch (e) {
+        message.reply(e.message);
+        console.error(e);
     }
 
 });
