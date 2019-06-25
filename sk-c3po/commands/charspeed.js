@@ -66,15 +66,15 @@ async function getGuildUnits(newMessage, charWords, ourAllyCode, swapi) {
             }
         );
 
-        newMessage.edit("Berechne Charakter Werte...");
+        newMessage.edit("`Berechne Charakter Werte...`");
 
         thenRequest('POST', crinoloCharacters,
             {
                 // no need //headers: headerJson,
                 json: foundChars
             }
-        ).done(function (res) {
-            console.log(res.getBody());
+        ).getBody('utf8').then(JSON.parse).done(function (res) {
+            console.log("res", res);
             
             embed.addField(foundUnits[0].nameKey, foundUnits[0].nameKey, true);
             
