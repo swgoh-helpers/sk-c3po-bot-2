@@ -46,11 +46,11 @@ client.on('message', message => {
         case "help":
             message.react(thinkingFace);
             message.channel.send("```"
-                + "channelid - zeigt die momentane channelid"
-                + "guildid - zeigt die momentane channelid"
-                + "twversus {bündniscode} - vergleicht zwei gilden"
-                + "charspeed {charakter} - zeigt das Tempo des Charakter"
-                + "charhealth {charakter1} - zeigt die Gesundheit des Charakter"
+                + "channelid - zeigt die momentane channelid\n"
+                + "guildid - zeigt die momentane channelid\n"
+                + "twversus {buendniscode} - vergleicht zwei gilden\n"
+                + "charspeed {charakter} - zeigt das Tempo des Charakter\n"
+                + "charhealth {charakter1} - zeigt die Gesundheit des Charakter\n"
                 +"```");
             break;
         case "spunkte":
