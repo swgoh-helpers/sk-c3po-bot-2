@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 
 var thenRequest = require('then-request');
-const crinoloCharacters = "https://crinolo-swgoh.glitch.me/statCalc/api/characters";
+const crinoloCharacters = "https://crinolo-swgoh.glitch.me/testCalc/api/characters";
 
 module.exports = async (message, charWords, swapi) => {
     try {
@@ -72,7 +72,11 @@ async function getGuildUnits(newMessage, charWords, ourAllyCode, swapi) {
         thenRequest('POST', crinoloCharacters,
             {
                 // no need //headers: headerJson,
-                json: foundChars
+                json:
+                {
+                    units: foundChars,
+                    withModCalc: true
+                }
             }
         ).getBody('utf8').then(JSON.parse).done(function (res) {
             console.log("res", res);
