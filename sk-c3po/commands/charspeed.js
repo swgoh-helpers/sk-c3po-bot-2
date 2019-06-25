@@ -72,7 +72,7 @@ async function getGuildUnits(newMessage, charWords, ourAllyCode, swapi) {
         thenRequest('POST', crinoloCharacters,
             {
                 // no need //headers: headerJson,
-                json: { units: foundChars }
+                json: foundChars
             }
         ).getBody('utf8').then(JSON.parse).done(function (res) {
             console.log("res", res);
