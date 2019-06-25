@@ -217,10 +217,7 @@ function getCharacterMessagePart(charUnit, ourUnits) {
         crinoloCharacters,
         {
             // no need //headers: headerJson,
-            json:
-            {
-                units: ourTotal
-            }
+            json: ourTotal
         }).getBody('utf8'));
 
     console.log("crinoloResult", crinoloResult);
