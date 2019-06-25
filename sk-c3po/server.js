@@ -51,10 +51,10 @@ client.on('message', message => {
                     + "twversus {buendniscode} - vergleicht mit der anderen Gilde "
                     + (process.env.INTERNTEXT ? process.env.INTERNTEXT : "")
                     + "\n"
-                    + "charspeed {charakter} - zeigt das Tempo des Charakter\n"
+                    + "charspeed {charakter} - zeigt das Tempo des Charakter"
                     + (process.env.INTERNTEXT ? process.env.INTERNTEXT : "")
                     + "\n"
-                    + "charhealth {charakter1} - zeigt die Gesundheit des Charakter\n"
+                    + "charhealth {charakter1} - zeigt die Gesundheit des Charakter"
                     + (process.env.INTERNTEXT ? process.env.INTERNTEXT : "")
                     + "\n"
                     + "twversus {buendniscode1 buendniscode2} - vergleicht zwei gilden\n"
