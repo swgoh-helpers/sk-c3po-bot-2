@@ -49,7 +49,7 @@ async function getGuildUnits(newMessage, charWords, ourAllyCode, swapi) {
         let allUnits = allUnitsSwapi.result;
 
         let foundUnits = [];
-        let foundChars = [];
+        let foundChars = {};
 
         charWords.forEach(
             function (charName) {
@@ -59,7 +59,7 @@ async function getGuildUnits(newMessage, charWords, ourAllyCode, swapi) {
                     newMessage.edit("`Vergleiche " + charName + "...`");
                     foundUnits.push(charUnit);
                     let baseId = charUnit.baseId;
-                    foundChars.push( { [baseId]: ourUnits[baseId] });
+                    foundChars[baseId]= ourUnits[baseId];
                     //embed.addField(charName, getCharacterMessagePart(charUnit, ourUnits), true);
                 } else {
                     newMessage.edit("`Konnte " + charName + " nicht finden...`");
@@ -72,7 +72,7 @@ async function getGuildUnits(newMessage, charWords, ourAllyCode, swapi) {
         thenRequest('POST', crinoloCharacters,
             {
                 // no need //headers: headerJson,
-                json: { units: foundChars }
+                json: foundChars
             }
         ).getBody('utf8').then(JSON.parse).done(function (res) {
             console.log("res", res);
