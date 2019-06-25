@@ -1,5 +1,8 @@
 const Discord = require('discord.js');
 
+var syncRequest = require('sync-request');
+const crinoloCharacters = https://crinolo-swgoh.glitch.me/statCalc/characters;
+
 module.exports = async (message, charWords, swapi) => {
     try {
 
@@ -208,13 +211,24 @@ function getCharacterMessagePart(charUnit, ourUnits) {
     var result = "```";
 
     let ourTotal = ourUnits[charUnit.baseId];
-    console.log("ourTotal", ourTotal);
-    console.log("test");
+    
+    var crinoloResult = syncRequest(
+        'POST',
+        crinoloCharacters,
+        {
+            // no need //headers: headerJson,
+            json:
+            {
+                units: ourTotal
+            }
+        });
+
+    console.log("crinoloResult", crinoloResult);
 
     //var spaces = calculateSpaces();
     ourTotal.forEach(
         function (charFound) {
-            result += `${charFound.player}:${charFound.gp}`;
+            result += `${charFound.player}:${charFound.gp}\n`;
         }
     );
 
