@@ -38,7 +38,7 @@ async function getGuildUnits(newMessage, charWords, ourAllyCode, swapi) {
 
         const allUnitsSwapi = await swapi.fetchData({
             "collection": "unitsList",
-            "allycode": enemyAllyCode,
+            "allycode": ourAllyCode,
             "language": process.env.LANGUAGE,
             "project": { "baseId": 1, "nameKey": 1, "descKey": 1, "forceAlignment": 1, "categoryIdList": 1, "combatType": 1 },
             "match": { "rarity": 7, "obtainable": true, "obtainableTime": 0 }
