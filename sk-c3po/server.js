@@ -48,9 +48,12 @@ client.on('message', message => {
             message.channel.send("```"
                 + "channelid - zeigt die momentane channelid\n"
                 + "guildid - zeigt die momentane channelid\n"
-                + "twversus {buendniscode} - vergleicht zwei gilden\n"
+                + "twversus {buendniscode} - vergleicht mit der anderen Gilde\n"
                 + "charspeed {charakter} - zeigt das Tempo des Charakter\n"
                 + "charhealth {charakter1} - zeigt die Gesundheit des Charakter\n"
+                + "twversus {buendniscode1 buendniscode2} - vergleicht zwei gilden\n"
+                + "charspeed {buendniscode=charakter} - zeigt das Tempo des Charakter\n"
+                + "charhealth {buendniscode=charakter} - zeigt die Gesundheit des Charakter\n"
                 +"```");
             break;
         case "spunkte":
