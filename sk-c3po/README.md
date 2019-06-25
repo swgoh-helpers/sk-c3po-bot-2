@@ -2,7 +2,7 @@
 PRAEFIX - Der Präfix für den bot ( z.B. +)  
 LANGUAGE = GER_DE  
 PORT = 8080  
-PROJECT_PATH = c3po  
+PROJECT_PATH = sk-c3po  
 GUILD_ALLYCODE - Der Bündnisscode eines Gildenmitglieds  
 GUILD_ID - Die GildenId von Discord  
 API_PASSWORD - swgoh.help.api zugangsdaten  
