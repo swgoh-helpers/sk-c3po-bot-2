@@ -30,7 +30,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="commands\auth.js" />
-    <Compile Include="commands\charhealt.js" />
+    <Compile Include="commands\charhealth.js" />
     <Compile Include="commands\charspeed.js" />
     <Compile Include="commands\twversus.js" />
     <Compile Include="commands\weeklytitle.js" />
