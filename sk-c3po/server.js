@@ -103,7 +103,7 @@ client.on('message', message => {
                 charWordsH = allWordsH[1].split(",");
             }
             else {
-                charWordsH = charWordsH[0].split(",");
+                charWordsH = allWordsH[0].split(",");
             }
 
             charhealth(message, charWordsH, swapi, allycodeH);
