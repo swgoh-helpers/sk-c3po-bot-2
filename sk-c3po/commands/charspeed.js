@@ -209,6 +209,7 @@ function getCharacterMessagePart(charUnit, ourUnits) {
 
     let ourTotal = ourUnits[charUnit.baseId];
     console.log("ourTotal", ourTotal);
+    console.log("test");
 
     //var spaces = calculateSpaces();
     ourTotal.forEach(
