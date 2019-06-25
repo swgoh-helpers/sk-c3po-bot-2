@@ -12,6 +12,8 @@ const weeklytitle = require('./commands/weeklytitle');
 const twversus = require('./commands/twversus');
 const charspeed = require('./commands/charspeed');
 
+const praefix = process.env.PRAEFIX;
+
 console.log('starting');
 client.on('ready', () => {
     console.log('I am ready!');
@@ -25,9 +27,9 @@ client.on('message', message => {
 
     /** Ignore conditions **/
     if (message.author.bot) { return; }
-    if (!message.content.startsWith("+")) { return; }
+    if (!message.content.startsWith(praefix)) { return; }
 
-    var messageWithoutPraefix = message.content.slice(1);
+    var messageWithoutPraefix = message.content.slice(praefix.length);
 
     var words = messageWithoutPraefix.split(" ");
     var command = words[0].toLowerCase();
@@ -54,7 +56,7 @@ client.on('message', message => {
             break;
         case "charspeed":
             message.react(thinkingFace);
-            var charWords = message.content.slice(2 + "charspeed".length).split(",");
+            var charWords = message.content.slice(praefix.length + "charspeed".length +1).split(",");
             charspeed(message, charWords, swapi);
             break;
         default:
