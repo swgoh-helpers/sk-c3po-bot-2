@@ -71,26 +71,31 @@ client.on('message', message => {
             break;
         case "charspeed":
             message.react(thinkingFace);
-            var allWords = message.content.slice(praefix.length + "charspeed".length + 1);
-            var charWords = allWords.split(",");
+            var allWords = message.content.slice(praefix.length + "charspeed".length + 1).split("=");
+            var charWords = [];
             var allycode = -1;
 
-            if (allWords.length === 2)
-            {
+            if (allWords.length === 2) {
                 allycode = allWords[0];
                 charWords = allWords[1].split(",");
+            }
+            else {
+                charWords = allWords.split(",");
             }
             charspeed(message, charWords, swapi, allycode);
             break;
         case "charhealth":
             message.react(thinkingFace);
-            var allWordsH = message.content.slice(praefix.length + "charhealth".length + 1);
-            var charWordsH = allWordsH.split(",");
+            var allWordsH = message.content.slice(praefix.length + "charhealth".length + 1).split("=");
+            var charWordsH = [];
             var allycodeH = -1;
 
             if (allWordsH.length === 2) {
                 allycodeH = allWordsH[0];
                 charWordsH = allWordsH[1].split(",");
+            }
+            else {
+                charWordsH = charWordsH.split(",");
             }
             
             charhealth(message, charWordsH, swapi, allycodeH);

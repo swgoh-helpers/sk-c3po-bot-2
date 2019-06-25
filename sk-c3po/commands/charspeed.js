@@ -13,6 +13,7 @@ module.exports = async (message, charWords, swapi, allycode) => {
 
         let ourAllyCode = allycode !== -1 ? allycode : process.env.GUILD_ALLYCODE;
 
+        console.log("allycode", allycode);
         console.log("ourAllyCode", ourAllyCode);
 
         message.reply("`Update eigene Gilde mit " + ourAllyCode + "`")
