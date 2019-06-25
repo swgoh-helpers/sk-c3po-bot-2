@@ -153,7 +153,7 @@ function getCharacterMessagePart(crinoloResult) {
     });
 
     allChars.forEach(function (char) {
-        result += `${char.player}: T=${char.totalspeed}\n`;
+        result += `${char.player}: ${char.totalspeed}\n`;
     });
 
     result += "```";
