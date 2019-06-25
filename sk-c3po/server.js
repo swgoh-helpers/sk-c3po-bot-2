@@ -37,8 +37,7 @@ client.on('message', message => {
 
     const thinkingFace = client.emojis.find(emoji => emoji.name === "thinking");
 
-    switch (command)
-    {
+    switch (command) {
         case "hallo":
             message.react(thinkingFace);
             message.channel.send("Guten Tag");
@@ -48,13 +47,19 @@ client.on('message', message => {
             message.channel.send("```"
                 + "channelid - zeigt die momentane channelid\n"
                 + "guildid - zeigt die momentane channelid\n"
-                + "twversus {buendniscode} - vergleicht mit der anderen Gilde\n"
-                + "charspeed {charakter} - zeigt das Tempo des Charakter\n"
-                + "charhealth {charakter1} - zeigt die Gesundheit des Charakter\n"
-                + "twversus {buendniscode1 buendniscode2} - vergleicht zwei gilden\n"
-                + "charspeed {buendniscode=charakter} - zeigt das Tempo des Charakter\n"
-                + "charhealth {buendniscode=charakter} - zeigt die Gesundheit des Charakter\n"
-                +"```");
+                + "twversus {buendniscode} - vergleicht mit der anderen Gilde "
+                + process.env.INTERNTEXT ? process.env.INTERNTEXT : ""
+                    + "\n"
+                    + "charspeed {charakter} - zeigt das Tempo des Charakter\n"
+                    + process.env.INTERNTEXT ? process.env.INTERNTEXT : ""
+                        + "\n"
+                        + "charhealth {charakter1} - zeigt die Gesundheit des Charakter\n"
+                        + process.env.INTERNTEXT ? process.env.INTERNTEXT : ""
+                        + "\n"
+                        + "twversus {buendniscode1 buendniscode2} - vergleicht zwei gilden\n"
+                        + "charspeed {buendniscode=charakter} - zeigt das Tempo des Charakter\n"
+                        + "charhealth {buendniscode=charakter} - zeigt die Gesundheit des Charakter\n"
+                        + "```");
             break;
         case "spunkte":
             message.react(thinkingFace);
@@ -83,7 +88,7 @@ client.on('message', message => {
                 charWords = allWords[1].split(",");
             }
             else {
-                charWords = allWords.split(",");
+                charWords = allWords[0].split(",");
             }
             charspeed(message, charWords, swapi, allycode);
             break;
@@ -98,9 +103,9 @@ client.on('message', message => {
                 charWordsH = allWordsH[1].split(",");
             }
             else {
-                charWordsH = charWordsH.split(",");
+                charWordsH = charWordsH[0].split(",");
             }
-            
+
             charhealth(message, charWordsH, swapi, allycodeH);
             break;
         default:
