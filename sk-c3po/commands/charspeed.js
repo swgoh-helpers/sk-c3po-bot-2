@@ -71,7 +71,7 @@ async function getGuildUnits(newMessage, charWords, ourAllyCode, swapi) {
         thenRequest('POST', crinoloCharacters,
             {
                 // no need //headers: headerJson,
-                json: ourTotal
+                json: foundChars
             }
         ).done(function (res) {
             console.log(res.getBody());
