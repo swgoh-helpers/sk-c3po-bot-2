@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 
 var thenRequest = require('then-request');
-const crinoloCharacters = "https://crinolo-swgoh.glitch.me/statCalc/characters";
+const crinoloCharacters = "https://crinolo-swgoh.glitch.me/statCalc/api/characters";
 
 module.exports = async (message, charWords, swapi) => {
     try {
