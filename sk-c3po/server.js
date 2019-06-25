@@ -71,7 +71,7 @@ client.on('message', message => {
             break;
         case "charspeed":
             message.react(thinkingFace);
-            var allWords = message.content.slice(praefix.length + "charspeed".length + 1).split(",");
+            var allWords = message.content.slice(praefix.length + "charspeed".length + 1);
             var charWords = allWords.split(",");
             var allycode = 0;
 
@@ -84,7 +84,7 @@ client.on('message', message => {
             break;
         case "charhealth":
             message.react(thinkingFace);
-            var allWordsH = message.content.slice(praefix.length + "charhealth".length + 1).split(",");
+            var allWordsH = message.content.slice(praefix.length + "charhealth".length + 1);
             var charWordsH = allWordsH.split(",");
             var allycodeH = 0;
 
