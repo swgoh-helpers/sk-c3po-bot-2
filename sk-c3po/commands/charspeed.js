@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 
-var syncRequest = require('sync-request');
+var thenRequest = require('then-request');
 const crinoloCharacters = "https://crinolo-swgoh.glitch.me/statCalc/characters";
 
 module.exports = async (message, charWords, swapi) => {
@@ -48,21 +48,39 @@ async function getGuildUnits(newMessage, charWords, ourAllyCode, swapi) {
         });
         let allUnits = allUnitsSwapi.result;
 
+        let foundUnits = [];
+        let foundChars = [];
+
         charWords.forEach(
             function (charName) {
                 let charUnit = allUnits.find(unit => unit.nameKey.toLowerCase() === charName.toLowerCase());
 
                 if (charUnit) {
                     newMessage.edit("`Vergleiche " + charName + "...`");
-                    embed.addField(charName, getCharacterMessagePart(charUnit, ourUnits), true);
+                    foundUnits.push(charUnit);
+                    foundChars.push(ourUnits[charUnit.baseId]);
+                    //embed.addField(charName, getCharacterMessagePart(charUnit, ourUnits), true);
                 } else {
                     newMessage.edit("`Konnte " + charName + " nicht finden...`");
-                    embed.addField(charName, "`Fehler bei der ermittlung der Einheit`", true);
                 }
             }
         );
 
-        newMessage.edit({ embed });
+        newMessage.edit("Berechne Charakter Werte...");
+
+        thenRequest('POST', crinoloCharacters,
+            {
+                // no need //headers: headerJson,
+                json: ourTotal
+            }
+        ).done(function (res) {
+            console.log(res.getBody());
+            
+            embed.addField(foundUnits[0].nameKey, foundUnits[0].nameKey, true);
+            
+            newMessage.edit({ embed });
+        });
+
 
     } catch (e) {
         newMessage.edit(e.message);
@@ -206,20 +224,12 @@ function calculateSpaces(values) {
     return spaces;
 }
 
-function getCharacterMessagePart(charUnit, ourUnits) {
+function getCharacterMessagePart(charUnit, ourUnits, crinoloResult) {
 
     var result = "```";
 
     let ourTotal = ourUnits[charUnit.baseId];
     
-    var crinoloResult = JSON.parse(syncRequest(
-        'POST',
-        crinoloCharacters,
-        {
-            // no need //headers: headerJson,
-            json: ourTotal
-        }).getBody('utf8'));
-
     console.log("crinoloResult", crinoloResult);
 
     //var spaces = calculateSpaces();
