@@ -73,7 +73,7 @@ client.on('message', message => {
             message.react(thinkingFace);
             var allWords = message.content.slice(praefix.length + "charspeed".length + 1);
             var charWords = allWords.split(",");
-            var allycode = 0;
+            var allycode = -1;
 
             if (allWords.length === 2)
             {
@@ -86,7 +86,7 @@ client.on('message', message => {
             message.react(thinkingFace);
             var allWordsH = message.content.slice(praefix.length + "charhealth".length + 1);
             var charWordsH = allWordsH.split(",");
-            var allycodeH = 0;
+            var allycodeH = -1;
 
             if (allWordsH.length === 2) {
                 allycodeH = allWordsH[0];
