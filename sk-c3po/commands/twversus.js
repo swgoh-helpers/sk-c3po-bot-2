@@ -7,9 +7,20 @@ module.exports = async (message, words, swapi) => {
             message.reply("Bitte gebe den Bündnisscode des Gegners an! \nBeispiel: `+twversus 123456789`");
             return;
         }
+        
+        let ourAllyCode = 0;
+        let enemyAllyCode = 0;
 
-        let ourAllyCode = process.env.GUILD_ALLYCODE;
-        let enemyAllyCode = words[1];
+        if (words.length === 3)
+        {
+            ourAllyCode = words[1];
+            enemyAllyCode = words[2];
+        }
+        else
+        {
+            ourAllyCode = process.env.GUILD_ALLYCODE;
+            enemyAllyCode = words[1];
+        }
 
         message.reply("`Update eigene Gilde mit " + ourAllyCode + "`")
             .then(
