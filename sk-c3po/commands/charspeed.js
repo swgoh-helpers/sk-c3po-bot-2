@@ -214,7 +214,7 @@ function getCharacterMessagePart(charUnit, ourUnits) {
     //var spaces = calculateSpaces();
     ourTotal.forEach(
         function (charFound) {
-            result += `${JSON.stringify(charFound)}`;
+            result += `${charFound.player}:${charFound.gp}`;
         }
     );
 
