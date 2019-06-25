@@ -49,7 +49,7 @@ async function getGuildUnits(newMessage, charWords, ourAllyCode, swapi) {
         let allUnits = allUnitsSwapi.result;
 
         let foundUnits = [];
-        let foundChars = {};
+        let foundChars = [];
 
         charWords.forEach(
             function (charName) {
@@ -59,7 +59,7 @@ async function getGuildUnits(newMessage, charWords, ourAllyCode, swapi) {
                     newMessage.edit("`Vergleiche " + charName + "...`");
                     foundUnits.push(charUnit);
                     let baseId = charUnit.baseId;
-                    foundChars[baseId] = ourUnits[baseId];
+                    foundChars.push( { [baseId]: ourUnits[baseId] });
                     //embed.addField(charName, getCharacterMessagePart(charUnit, ourUnits), true);
                 } else {
                     newMessage.edit("`Konnte " + charName + " nicht finden...`");
