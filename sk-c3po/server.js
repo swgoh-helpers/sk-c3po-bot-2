@@ -11,6 +11,7 @@ const spunkte = require('./commands/spunkte');
 const weeklytitle = require('./commands/weeklytitle');
 const twversus = require('./commands/twversus');
 const charspeed = require('./commands/charspeed');
+const charhealth = require('./commands/charhealth');
 
 const praefix = process.env.PRAEFIX;
 
@@ -56,8 +57,13 @@ client.on('message', message => {
             break;
         case "charspeed":
             message.react(thinkingFace);
-            var charWords = message.content.slice(praefix.length + "charspeed".length +1).split(",");
+            var charWords = message.content.slice(praefix.length + "charspeed".length + 1).split(",");
             charspeed(message, charWords, swapi);
+            break;
+        case "charhealth":
+            message.react(thinkingFace);
+            var charWordsH = message.content.slice(praefix.length + "charhealth".length + 1).split(",");
+            charhealth(message, charWordsH, swapi);
             break;
         default:
             message.react(thinkingFace);
