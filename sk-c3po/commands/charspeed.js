@@ -59,7 +59,7 @@ async function getGuildUnits(newMessage, charWords, ourAllyCode, swapi) {
                     newMessage.edit("`Vergleiche " + charName + "...`");
                     foundUnits.push(charUnit);
                     let baseId = charUnit.baseId;
-                    foundChars[baseId]= ourUnits[baseId];
+                    foundChars[baseId] = ourUnits[baseId];
                     //embed.addField(charName, getCharacterMessagePart(charUnit, ourUnits), true);
                 } else {
                     newMessage.edit("`Konnte " + charName + " nicht finden...`");
@@ -77,12 +77,11 @@ async function getGuildUnits(newMessage, charWords, ourAllyCode, swapi) {
         ).getBody('utf8').then(JSON.parse).done(function (res) {
 
             foundUnits.forEach(
-                function (unit)
-                {
+                function (unit) {
                     embed.addField(unit.nameKey, getCharacterMessagePart(res[unit.baseId]), true);
                 }
             );
-            
+
             newMessage.edit({ embed });
         });
 
@@ -129,16 +128,33 @@ function getCharacterMessagePart(crinoloResult) {
     var result = "```";
 
     console.log("crinoloResult", crinoloResult);
-    let count = 0;
-    //var spaces = calculateSpaces();
+
+    let allChars = [];
+
     crinoloResult.forEach(
         function (cResult) {
-            if (count < 10) {
-                result += `${cResult.player}: B=${cResult.stats.base.Speed} G=${cResult.stats.gear.Speed} M=${cResult.stats.mods.Speed}\n`;
-                count++;
-            }            
+            let totalSpeed = 0;
+            if (cResult.stats.base.Speed) {
+                totalSpeed += cResult.stats.base.Speed;
+            }
+            if (cResult.stats.gear.Speed) {
+                totalSpeed += cResult.stats.gear.Speed;
+            }
+            if (cResult.stats.mods.Speed) {
+                totalSpeed += cResult.stats.mods.Speed;
+            }
+
+            allChars.push({ player: cResult.player, totalspeed: totalSpeed });
         }
     );
+
+    allChars = allChars.sort(function (a, b) {
+        return a.totalspeed < b.totalspeed ? -1 : 1;
+    });
+
+    allChars.forEach(function (char) {
+        result += `${char.player}: T=${char.totalspeed}\n`;
+    });
 
     result += "```";
     return result;
