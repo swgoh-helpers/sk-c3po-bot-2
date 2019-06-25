@@ -10,6 +10,7 @@ const swapi = new ApiSwgohHelp({
 const spunkte = require('./commands/spunkte');
 const weeklytitle = require('./commands/weeklytitle');
 const twversus = require('./commands/twversus');
+const charspeed = require('./commands/charspeed');
 
 console.log('starting');
 client.on('ready', () => {
@@ -43,10 +44,6 @@ client.on('message', message => {
             message.react(thinkingFace);
             spunkte(message);
             break;
-        //case "weekly":
-        //    message.react(thinkingFace);
-        //    weeklytitle(client);
-        //    break;
         case "channelid":
             message.react(thinkingFace);
             message.reply(message.channel.id);
@@ -54,6 +51,11 @@ client.on('message', message => {
         case "twversus":
             message.react(thinkingFace);
             twversus(message, words, swapi);
+            break;
+        case "charspeed":
+            message.react(thinkingFace);
+            var charWords = message.content.slice(2 + "charspeed".length).split(",");
+            charspeed(message, charWords, swapi);
             break;
         default:
             message.react(thinkingFace);
