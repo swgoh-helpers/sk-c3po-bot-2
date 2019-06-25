@@ -126,9 +126,7 @@ function calculateSpaces(values) {
 function getCharacterMessagePart(crinoloResult) {
 
     var result = "```";
-
-    console.log("crinoloResult", crinoloResult);
-
+    
     let allChars = [];
 
     crinoloResult.forEach(
