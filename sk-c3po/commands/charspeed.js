@@ -129,11 +129,14 @@ function getCharacterMessagePart(crinoloResult) {
     var result = "```";
 
     console.log("crinoloResult", crinoloResult);
-
+    let count = 0;
     //var spaces = calculateSpaces();
     crinoloResult.forEach(
         function (cResult) {
-            result += `${cResult.player}: Base=${cResult.stats.base.Speed} Gear=${cResult.stats.gear.Speed} Mods=${cResult.stats.mods.Speed}\n`;
+            if (count < 10) {
+                result += `${cResult.player}: B=${cResult.stats.base.Speed} G=${cResult.stats.gear.Speed} M=${cResult.stats.mods.Speed}\n`;
+                count++;
+            }            
         }
     );
 
