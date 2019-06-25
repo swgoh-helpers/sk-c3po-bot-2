@@ -149,7 +149,7 @@ function getCharacterMessagePart(crinoloResult) {
     );
 
     allChars = allChars.sort(function (a, b) {
-        return a.totalspeed < b.totalspeed ? -1 : 1;
+        return a.totalspeed > b.totalspeed ? -1 : 1;
     });
 
     allChars.forEach(function (char) {
