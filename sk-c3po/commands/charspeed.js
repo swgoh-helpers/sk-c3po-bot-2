@@ -212,7 +212,7 @@ function getCharacterMessagePart(charUnit, ourUnits) {
 
     let ourTotal = ourUnits[charUnit.baseId];
     
-    var crinoloResult = syncRequest(
+    var crinoloResult = JSON.parse(syncRequest(
         'POST',
         crinoloCharacters,
         {
@@ -221,7 +221,7 @@ function getCharacterMessagePart(charUnit, ourUnits) {
             {
                 units: ourTotal
             }
-        });
+        }).getBody('utf8'));
 
     console.log("crinoloResult", crinoloResult);
 
