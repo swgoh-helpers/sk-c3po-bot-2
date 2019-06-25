@@ -132,14 +132,14 @@ function getCharacterMessagePart(crinoloResult) {
     crinoloResult.forEach(
         function (cResult) {
             let totalSpeed = 0;
-            if (cResult.stats.base.Speed) {
-                totalSpeed += cResult.stats.base.Speed;
+            if (cResult.stats.base.Health) {
+                totalSpeed += cResult.stats.base.Health;
             }
-            if (cResult.stats.gear.Speed) {
-                totalSpeed += cResult.stats.gear.Speed;
+            if (cResult.stats.gear.Health) {
+                totalSpeed += cResult.stats.gear.Health;
             }
-            if (cResult.stats.mods.Speed) {
-                totalSpeed += cResult.stats.mods.Speed;
+            if (cResult.stats.mods.Health) {
+                totalSpeed += cResult.stats.mods.Health;
             }
 
             allChars.push({ player: cResult.player, totalspeed: totalSpeed });
