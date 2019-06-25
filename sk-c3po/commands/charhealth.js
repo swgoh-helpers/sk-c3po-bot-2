@@ -3,15 +3,15 @@ const Discord = require('discord.js');
 var thenRequest = require('then-request');
 const crinoloCharacters = "https://crinolo-swgoh.glitch.me/testCalc/api/characters";
 
-module.exports = async (message, charWords, swapi) => {
+module.exports = async (message, charWords, swapi, allycode) => {
     try {
 
         if (charWords.length < 1) {
             message.reply("Bitte geben sie mindestens einen Charakter an! \nBeispiel1: `+charspeed Darth Revan`\nBeispiel2: `+charspeed Darth Revan,Han Solo,General Kenobi`");
             return;
         }
-
-        let ourAllyCode = process.env.GUILD_ALLYCODE;
+        
+        let ourAllyCode = allycode != -1 ? allycode : process.env.GUILD_ALLYCODE;
 
         message.reply("`Update eigene Gilde mit " + ourAllyCode + "`")
             .then(

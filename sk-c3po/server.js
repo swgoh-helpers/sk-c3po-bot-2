@@ -43,6 +43,16 @@ client.on('message', message => {
             message.react(thinkingFace);
             message.channel.send("Guten Tag");
             break;
+        case "help":
+            message.react(thinkingFace);
+            message.channel.send("```"
+                + "channelid - zeigt die momentane channelid"
+                + "guildid - zeigt die momentane channelid"
+                + "twversus {bündniscode} - vergleicht zwei gilden"
+                + "charspeed {charakter} - zeigt das Tempo des Charakter"
+                + "charhealth {charakter1} - zeigt die Gesundheit des Charakter"
+                +"```");
+            break;
         case "spunkte":
             message.react(thinkingFace);
             spunkte(message);
@@ -61,13 +71,29 @@ client.on('message', message => {
             break;
         case "charspeed":
             message.react(thinkingFace);
-            var charWords = message.content.slice(praefix.length + "charspeed".length + 1).split(",");
-            charspeed(message, charWords, swapi);
+            var allWords = message.content.slice(praefix.length + "charspeed".length + 1).split(",");
+            var charWords = allWords.split(",");
+            var allycode = 0;
+
+            if (allWords.length === 2)
+            {
+                allycode = allWords[0];
+                charWords = allWords[1].split(",");
+            }
+            charspeed(message, charWords, swapi, allycode);
             break;
         case "charhealth":
             message.react(thinkingFace);
-            var charWordsH = message.content.slice(praefix.length + "charhealth".length + 1).split(",");
-            charhealth(message, charWordsH, swapi);
+            var allWordsH = message.content.slice(praefix.length + "charhealth".length + 1).split(",");
+            var charWordsH = allWordsH.split(",");
+            var allycodeH = 0;
+
+            if (allWordsH.length === 2) {
+                allycodeH = allWordsH[0];
+                charWordsH = allWordsH[1].split(",");
+            }
+            
+            charhealth(message, charWordsH, swapi, allycodeH);
             break;
         default:
             message.react(thinkingFace);
